@@ -13,7 +13,7 @@ N/A
 Description:
 Create a two dimensional game using the unity game engine. 
 
-Vision Statement:
+Vision Statement: To create an online competitive multiplayer runner game that we all would enjoy to play!
 
 Risks:
   -Lack of experience using the Unity game engine.
