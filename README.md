@@ -29,27 +29,27 @@ List of Requirements
   
     -“As a player, I want to be able to open a game from my desktop so that I can enter the main menu”
     
-      -ID:
+      -ID: 20 minutes
       
     -“As a player, I want to see a beautiful start menu so that I am enticed to start playing the game”
     
-      -ID:
+      -ID: 8 hours
       
     -“As a user, I want to be able to host a lobby so that friends can join my lobby”
     
-      -ID:
+      -ID: 
       
     -“As a lobby host, I want to be able to easily initialize a game so that I can begin playing the game”
     
-      -ID:
+      -ID: 
       
     -“As an avid gamer, I want to see nice graphics in a game so that I do not want to tear out my eyeballs”
     
-      -ID:
+      -ID: 
       
     -“As a player, I want to be able to play the game on multiple platforms so that I can play with my friends"
     
-      -ID:
+      -ID: 20 minutes
       
 
       
