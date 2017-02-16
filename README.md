@@ -66,4 +66,9 @@ We will be usint PIVOTAL for project tracking. Pivotal is a useful tool because 
   
 Project Plan:
 
+
+  Start with this:
+
   https://drive.google.com/file/d/0BzE3163HDGlIQXE0c0VxR3V6X0U/view?usp=sharing
+  
+  Add more to it when we need it.
