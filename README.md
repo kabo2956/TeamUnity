@@ -37,15 +37,15 @@ List of Requirements
       
     -“As a user, I want to be able to host a lobby so that friends can join my lobby”
     
-      -ID: 
+      -ID: 8 hours
       
     -“As a lobby host, I want to be able to easily initialize a game so that I can begin playing the game”
     
-      -ID: 
+      -ID: 8 hours
       
     -“As an avid gamer, I want to see nice graphics in a game so that I do not want to tear out my eyeballs”
     
-      -ID: 
+      -ID: 8 hours
       
     -“As a player, I want to be able to play the game on multiple platforms so that I can play with my friends"
     
