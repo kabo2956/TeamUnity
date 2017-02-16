@@ -4,7 +4,7 @@ CSCI-3308 semester project - game
 Team Members:
 Kaleb Bodisch
 Chance Roberts
-Tabin Shaban
+Tamim Shaban
 Cale Anderson
 
 Title:
