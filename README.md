@@ -2,10 +2,14 @@
 CSCI-3308 semester project - game
 
 Team Members:
-Kaleb Bodisch
-Chance Roberts
-Tamim Shaban
-Cale Anderson
+
+  Kaleb Bodisch - kabo2956
+
+  Chance Roberts - PlatPlat48
+  
+  Tamim Shaban - TamimSha
+  
+  Cale Anderson - caleianderson
 
 Title:
 Working Title (Sp4ce Adventures)
@@ -61,6 +65,8 @@ Project Tracking Software:
 
 For this project we will be using GitHub to maintain version control between members of the team throughout the semester. 
 We will be usint PIVOTAL for project tracking. Pivotal is a useful tool because it is able to link your progress to github repositories as well as handle user stories as task throughout the project timeline.
+
+Pivotal Tracker Here -> https://www.pivotaltracker.com/n/projects/1974261
 
   
 Project Plan:
