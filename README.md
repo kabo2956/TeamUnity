@@ -60,9 +60,8 @@ For this project the team will most likely use an agile scheme for production. T
 Project Tracking Software:
 
 For this project we will be using GitHub to maintain version control between members of the team throughout the semester. 
-We will be usint PIVOTAL for project tracking. Pivotal is a useful tool because it is able to link your progress to github repositories.
+We will be usint PIVOTAL for project tracking. Pivotal is a useful tool because it is able to link your progress to github repositories as well as handle user stories as task throughout the project timeline.
 
-  -What type of Scheduling do you guys think we should use????
   
 Project Plan:
 
