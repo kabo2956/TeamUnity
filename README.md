@@ -15,7 +15,9 @@ Title:
 Working Title (Sp4ce Adventures)
 
 Description:
-Create a two dimensional game using the unity game engine. 
+Create a two dimensional game using the unity game engine.
+
+This game will be a platformer/runner game that will be procedurally generated. You will eventually be able to play online, and the goal is to outrun an explosion/supernova and be the only one to survive. There are certain things that you will be able to do to prevent your friends from getting to the end, like jumping on them.
 
 Vision Statement: To create an online competitive multiplayer runner game that we all would enjoy to play!
 
