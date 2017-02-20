@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  productGUID: 9615affb460e04a4e94b420f6a343ed6
+  productGUID: fdfa828c827a7491b84964524270f085
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
@@ -287,7 +287,7 @@ PlayerSettings:
   ps4DownloadDataSize: 0
   ps4GarlicHeapSize: 2048
   ps4ProGarlicHeapSize: 2560
-  ps4Passcode: bi9UOuSpM2Tlh01vOzwvSikHFswuzleh
+  ps4Passcode: 9nsQzldVI5ZuGXbEWRK5RhRXdCdG5nG5
   ps4UseDebugIl2cppLibs: 0
   ps4pnSessions: 1
   ps4pnPresence: 1
@@ -334,7 +334,7 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
-  psp2PackagePassword: t6xGbotuQQgmO6GkdAqwedXNRRadbLMZ
+  psp2PackagePassword: azdNMK66MuCV6GXi5xr84P2R391UXaLH
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -460,9 +460,8 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
-  cloudServicesEnabled:
-    UNet: 1
-  cloudProjectId: b964095f-aebf-439e-806f-ce6559e96839
-  projectName: Space Adventures
+  cloudServicesEnabled: {}
+  cloudProjectId: 9fc9e47a-86bb-4585-9676-8ab6a0cdb502
+  projectName: Space Adventures (1)
   organizationId: chance-roberts
   cloudEnabled: 0
