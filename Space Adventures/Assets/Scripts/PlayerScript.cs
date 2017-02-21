@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour {
 		onGround = false;
 		spacePress = 0;
 		rBody = GetComponent<Rigidbody2D> ();
-		jumpForce = 400;
+		jumpForce = 200;
 	}
 	
 	// Update is called once per frame
