@@ -9,6 +9,7 @@ using UnityEngine;
  * */
 public class gloVar : MonoBehaviour {
 	public static float gravity = 10f;
+	public static int isPressed = 2;
 	// Use this for initialization
 	void Start () {
 	}
