@@ -67,25 +67,27 @@ public class PlayerScript : MonoBehaviour {
 			else
 				rBody.AddForce (new Vector2 (0, Physics2D.gravity.y * 0.4f));
 		} 
+		print (onGround);
 		//onGround = false;
 	}
 
 	void OnCollisionStay2D(Collision2D collision){
 		if (collision.enabled) {
-			if (collision.contacts [0].point.y > collision.collider.bounds.center.y) {
+			Bounds b = collision.collider.bounds;
+			if (collision.contacts [0].point.y >= b.center.y+b.extents.y && (spacePress <= 0 || (spacePress > 0 && rBody.velocity.y < 0))) {
 				string name = collision.gameObject.name;
 					onGround = true;
 			}
+
 		}
 	}
 
 	void OnCollisionExit2D(Collision2D collision){
 		if (collision.enabled) {
-			if (collision.contacts [0].point.y > collision.collider.bounds.center.y) {
+			Bounds b = collision.collider.bounds;
+			if (collision.contacts [0].point.y < b.center.y+b.extents.y) {
 				string name = collision.gameObject.name;
-				if (name == "Solid") {
-					onGround = false;
-				}
+				onGround = false;
 			}
 		}
 	}
