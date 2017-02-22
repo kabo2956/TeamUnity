@@ -74,9 +74,7 @@ public class PlayerScript : MonoBehaviour {
 		if (collision.enabled) {
 			if (collision.contacts [0].point.y > collision.collider.bounds.center.y) {
 				string name = collision.gameObject.name;
-				if (name == "Solid") {
 					onGround = true;
-				}
 			}
 		}
 	}
