@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour {
 	//float dX, dY;
 	bool onGround,leftWallCheck,rightWallCheck;
 	int spacePress;
-	float jumpForce, walkVelocity,refinedJump;
+	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump;
 	Rigidbody2D rBody;
 	// Use this for initialization
 	void Start () {
@@ -18,6 +18,8 @@ public class PlayerScript : MonoBehaviour {
 		rBody = GetComponent<Rigidbody2D> ();
 		jumpForce = 250;
 		walkVelocity = 6;
+		runVelocity = walkVelocity * 1.5f;
+		maxVelocity = walkVelocity;
 		refinedJump = -1;
 		leftWallCheck = false;
 		rightWallCheck = false;
@@ -31,22 +33,38 @@ public class PlayerScript : MonoBehaviour {
 		bool upPress = Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W);
 		bool downPress = Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S);
 		Vector2 vel = rBody.velocity;
+		//Determine if you're running first.
+		if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
+			maxVelocity = runVelocity;
+		} else {
+			maxVelocity = walkVelocity;
+		}
 		//float dX = vel.x;
-		if (leftPress && !rightPress && !leftWallCheck && (!rightWallCheck || onGround)) {
-			if (vel.x > -walkVelocity) {
+		if (leftPress && !rightPress && !leftWallCheck) {
+			if (vel.x > -maxVelocity) {
 				if (onGround)
 					rBody.AddForce (new Vector2 (-10, 0));
 				else
 					rBody.AddForce (new Vector2 (-4, 0));
-			} else {
-				
+			} else if (onGround) {
+				if (vel.x * 13 / 14 > -maxVelocity) {
+					rBody.velocity = new Vector2 (vel.x * 13 / 14, vel.y);
+				} else {
+					rBody.velocity = new Vector2 (-maxVelocity, vel.y);
+				}
 			}
-		} else if (rightPress && !leftPress && !rightWallCheck && (!leftWallCheck || onGround)) {
-			if (vel.x < walkVelocity) {
+		} else if (rightPress && !leftPress && !rightWallCheck) {
+			if (vel.x < maxVelocity) {
 				if (onGround)
 					rBody.AddForce (new Vector2 (10, 0));
 				else
 					rBody.AddForce (new Vector2 (4, 0));
+			} else if (onGround) {
+				if (vel.x * 13 / 14 < maxVelocity) {
+					rBody.velocity = new Vector2 (vel.x * 13 / 14, vel.y);
+				} else {
+					rBody.velocity = new Vector2 (maxVelocity, vel.y);
+				}
 			}
 		} else if (onGround){
 			rBody.velocity = new Vector2 (vel.x*13/14, vel.y);
@@ -68,8 +86,6 @@ public class PlayerScript : MonoBehaviour {
 						rBody.AddForce (new Vector2 (jumpForce * 0.4f, jumpForce * 1.3f));
 					else if (downPress)
 						rBody.AddForce (new Vector2 (jumpForce * 0.8f, -jumpForce * 0.5f));
-					else if (rightPress)
-						rBody.AddForce (new Vector2 (jumpForce * 1.5f, jumpForce * 0.3f));
 					else
 						rBody.AddForce (new Vector2 (jumpForce * 1.0f, jumpForce * 0.8f));
 				}
@@ -82,8 +98,6 @@ public class PlayerScript : MonoBehaviour {
 						rBody.AddForce (new Vector2 (-jumpForce * 0.4f, jumpForce * 1.3f));
 					else if (downPress)
 						rBody.AddForce (new Vector2 (-jumpForce * 0.8f, -jumpForce * 0.5f));
-					else if (leftPress)
-						rBody.AddForce (new Vector2 (-jumpForce * 1.5f, jumpForce * 0.3f));
 					else
 						rBody.AddForce (new Vector2 (-jumpForce * 1.0f, jumpForce * 0.8f));
 				}
