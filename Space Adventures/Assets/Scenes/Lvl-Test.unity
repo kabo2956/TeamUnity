@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 75530375}
-  speed: 0.05
+  speed: 0.03
   spawnTransform: {fileID: 1866060123}
   platformGap: 7
   platformGapRange:
