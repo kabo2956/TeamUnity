@@ -40,34 +40,35 @@ public class PlayerScript : MonoBehaviour {
 			maxVelocity = walkVelocity;
 		}
 		//float dX = vel.x;
+		//print (vel.x);
 		if (leftPress && !rightPress && !leftWallCheck) {
 			if (vel.x > -maxVelocity) {
 				if (onGround)
-					rBody.AddForce (new Vector3 (-10, 0));
+					rBody.AddForce (new Vector3 (-10, 0, 0));
 				else
-					rBody.AddForce (new Vector3 (-4, 0));
+					rBody.AddForce (new Vector3 (-4, 0, 0));
 			} else if (onGround) {
 				if (vel.x * 13 / 14 > -maxVelocity) {
-					rBody.velocity = new Vector3 (vel.x * 13 / 14, vel.y);
+					rBody.velocity = new Vector3 (vel.x * 13 / 14, vel.y, 0);
 				} else {
-					rBody.velocity = new Vector3 (-maxVelocity, vel.y);
+					rBody.velocity = new Vector3 (-maxVelocity, vel.y, 0);
 				}
 			}
 		} else if (rightPress && !leftPress && !rightWallCheck) {
 			if (vel.x < maxVelocity) {
 				if (onGround)
-					rBody.AddForce (new Vector3 (10, 0));
+					rBody.AddForce (new Vector3 (10, 0, 0));
 				else
-					rBody.AddForce (new Vector3 (4, 0));
+					rBody.AddForce (new Vector3 (4, 0, 0));
 			} else if (onGround) {
 				if (vel.x * 13 / 14 < maxVelocity) {
-					rBody.velocity = new Vector3 (vel.x * 13 / 14, vel.y);
+					rBody.velocity = new Vector3 (vel.x * 13 / 14, vel.y, 0);
 				} else {
-					rBody.velocity = new Vector3 (maxVelocity, vel.y);
+					rBody.velocity = new Vector3 (maxVelocity, vel.y, 0);
 				}
 			}
 		} else if (onGround){
-			rBody.velocity = new Vector3 (vel.x*13/14, vel.y);
+			rBody.velocity = new Vector3 (vel.x*13/14, vel.y, 0);
 		}
 		//There's a possibility that the person may hit space when the player is close to the ground. Let's account for that.
 		if (Input.GetKey (KeyCode.Space)) {
@@ -78,16 +79,16 @@ public class PlayerScript : MonoBehaviour {
 		//Wall slide
 		if (!onGround) {
 			if (leftWallCheck && leftPress) {
-				rBody.AddForce (new Vector3 (-1, -Physics2D.gravity.y * 1 / 3));
+				rBody.AddForce (new Vector3 (-1, -Physics2D.gravity.y * 1 / 3, 0));
 				if (spacePress > 0 && spacePress <= gloVar.isPressed) {
 					spacePress = gloVar.isPressed + 1;
 					refinedJump = 0;
 					if (upPress)
-						rBody.AddForce (new Vector3 (jumpForce * 0.4f, jumpForce * 1.3f));
+						rBody.AddForce (new Vector3 (jumpForce * 0.4f, jumpForce * 1.3f, 0));
 					else if (downPress)
-						rBody.AddForce (new Vector3 (jumpForce * 0.8f, -jumpForce * 0.5f));
+						rBody.AddForce (new Vector3 (jumpForce * 0.8f, -jumpForce * 0.5f, 0));
 					else
-						rBody.AddForce (new Vector3 (jumpForce * 1.0f, jumpForce * 0.8f));
+						rBody.AddForce (new Vector3 (jumpForce * 1.0f, jumpForce * 0.8f, 0));
 				}
 			} else if (rightWallCheck && rightPress) {
 				rBody.AddForce (new Vector3 (1, -Physics2D.gravity.y * 1 / 3));
@@ -95,16 +96,19 @@ public class PlayerScript : MonoBehaviour {
 					spacePress = gloVar.isPressed + 1;
 					refinedJump = 0;
 					if (upPress)
-						rBody.AddForce (new Vector3 (-jumpForce * 0.4f, jumpForce * 1.3f));
+						rBody.AddForce (new Vector3 (-jumpForce * 0.4f, jumpForce * 1.3f, 0));
 					else if (downPress)
-						rBody.AddForce (new Vector3 (-jumpForce * 0.8f, -jumpForce * 0.5f));
+						rBody.AddForce (new Vector3 (-jumpForce * 0.8f, -jumpForce * 0.5f, 0));
 					else
-						rBody.AddForce (new Vector3 (-jumpForce * 1.0f, jumpForce * 0.8f));
+						rBody.AddForce (new Vector3 (-jumpForce * 1.0f, jumpForce * 0.8f, 0));
 				}
+			} else {
+				leftWallCheck = false;
+				rightWallCheck = false;
 			}
 		}
 		if (onGround && spacePress > 0 && spacePress <= gloVar.isPressed) {
-			rBody.AddForce (new Vector3 (0, jumpForce));
+			rBody.AddForce (new Vector3 (0, jumpForce, 0));
 			onGround = false;
 			spacePress = gloVar.isPressed + 1;
 			refinedJump = 0;
@@ -113,33 +117,39 @@ public class PlayerScript : MonoBehaviour {
 			if (refinedJump > 0.25)
 				refinedJump = -1;
 			if (spacePress > 0)
-				rBody.AddForce (new Vector3 (0, -Physics2D.gravity.y * 1.0f));
+				rBody.AddForce (new Vector3 (0, -Physics2D.gravity.y * 1.0f, 0));
 			else
-				rBody.AddForce (new Vector3 (0, Physics2D.gravity.y * 0.4f));
+				rBody.AddForce (new Vector3 (0, Physics2D.gravity.y * 0.4f, 0));
 		}
 	}
 
 	void OnCollisionStay(Collision collision){
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1)) > Mathf.Sqrt(2)/2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > Mathf.Sqrt(2)/2) {
 				onGround = true;
 			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0)) > Mathf.Sqrt(2)/2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0, 0)) > Mathf.Sqrt(2)/2) {
 				leftWallCheck = true;
 			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0)) > Mathf.Sqrt(2)/2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0, 0)) > Mathf.Sqrt(2)/2) {
 				rightWallCheck = true;
 			}
 	}
 
 	void OnCollisionExit(Collision collision){
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1)) > Mathf.Sqrt(2)/2) {
+		if (collision.contacts.Length > 0) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > Mathf.Sqrt (2) / 2) {
 				onGround = false;
 			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0)) > Mathf.Sqrt(2)/2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0, 0)) > Mathf.Sqrt (2) / 2) {
 				leftWallCheck = false;
 			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0)) > Mathf.Sqrt(2)/2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0, 0)) > Mathf.Sqrt (2) / 2) {
 				rightWallCheck = false;
 			}
+		} else {
+			onGround = false;
+			leftWallCheck = false;
+			rightWallCheck = false;
+		}
 	}
 }
