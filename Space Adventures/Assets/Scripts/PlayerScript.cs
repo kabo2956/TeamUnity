@@ -124,26 +124,26 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void OnCollisionStay(Collision collision){
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > Mathf.Sqrt(2)/2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > 1/2) {
 				onGround = true;
 			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0, 0)) > Mathf.Sqrt(2)/2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0, 0)) > Mathf.Sqrt(3)/2) {
 				leftWallCheck = true;
 			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0, 0)) > Mathf.Sqrt(2)/2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0, 0)) > Mathf.Sqrt(3)/2) {
 				rightWallCheck = true;
 			}
 	}
 
 	void OnCollisionExit(Collision collision){
 		if (collision.contacts.Length > 0) {
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > Mathf.Sqrt (2) / 2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > 1 / 2) {
 				onGround = false;
 			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0, 0)) > Mathf.Sqrt (2) / 2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0, 0)) > Mathf.Sqrt (3) / 2) {
 				leftWallCheck = false;
 			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0, 0)) > Mathf.Sqrt (2) / 2) {
+			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0, 0)) > Mathf.Sqrt (3) / 2) {
 				rightWallCheck = false;
 			}
 		} else {
