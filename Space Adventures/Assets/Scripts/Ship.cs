@@ -16,7 +16,7 @@ public class Ship : MonoBehaviour {
 		if (rBody.velocity.x < -maxSpeed) {
 			rBody.velocity = new Vector3 (-maxSpeed, rBody.velocity.y);
 		} else {
-			rBody.AddForce (new Vector3 (-8, 0, 0));
+			rBody.AddForce (new Vector3 (-8*rBody.mass, 0, 0));
 		}
 	}
 }

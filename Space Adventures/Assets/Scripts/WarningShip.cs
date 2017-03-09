@@ -25,7 +25,7 @@ public class WarningShip : MonoBehaviour {
 			//Spawn a ship!
 			Vector3 pos = gameObject.transform.position;
 			GameObject g = Instantiate(ship, gameObject.transform);
-			g.transform.position = new Vector3 (pos.x + 2, pos.y, pos.z);
+			g.transform.position = new Vector3 (pos.x + 2, pos.y, pos.z+1);
 			g.transform.SetParent (null);
 			Destroy (gameObject);
 		} 
