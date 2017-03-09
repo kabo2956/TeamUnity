@@ -17,6 +17,8 @@ public class WarningShip : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Camera cam = Camera.main;
+		transform.position = new Vector3 (cam.transform.position.x + 9.2f, transform.position.y, transform.position.z);
 		warningTime -= Time.deltaTime;
 		nextFrame -= Time.deltaTime;
 		if (warningTime <= 0) {
