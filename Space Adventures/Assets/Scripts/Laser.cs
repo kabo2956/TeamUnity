@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenLaser : MonoBehaviour {
+public class Laser : MonoBehaviour {
 	private bool activated;
 	private float timeUntilSwitch;
 	public float maxTime, minTime;
 	public Material[] mat;
 	public GameObject trap;
-	public int isRed;
+	public int color; //Green: 0, Red: 1, Blue: 2
 	public float maxPower, minPower;
 	// Use this for initialization
 	void Start () {
@@ -36,11 +36,13 @@ public class GreenLaser : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.name == "Player") {
-			if (isRed == 1) {
+			if (color == 0) {
 				Vector3 pos = gameObject.transform.position;
 				GameObject g = Instantiate (trap, gameObject.transform);
 				g.transform.position = new Vector3 (pos.x - 4, Camera.main.transform.position.y + 7, 0);
 				g.transform.SetParent (null);
+			} else if (color == 2) {
+				coll.gameObject.GetComponent<PlayerScript> ().stun (Random.Range (minPower, maxPower));
 			} else {
 				coll.gameObject.GetComponent<Rigidbody> ().AddForce (-Random.Range (minPower, maxPower), -8, 0);
 			}
