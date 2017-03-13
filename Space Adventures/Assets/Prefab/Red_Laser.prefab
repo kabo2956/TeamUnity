@@ -98,7 +98,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7872d5d93c1a648258dbc7c757ab0347, type: 2}
   - {fileID: 2100000, guid: 018d25ec726d148bfbb057acac4833d7, type: 2}
   trap: {fileID: 1937350027129386, guid: af8e1d3a9c039473987cfecfd004a8b7, type: 2}
-  isRed: 0
+  color: 1
   maxPower: 1000
   minPower: 1250
 --- !u!136 &136053930663855260
