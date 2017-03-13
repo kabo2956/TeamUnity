@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour {
 	bool onGround,leftWallCheck,rightWallCheck;
 	int spacePress;
 	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump;
+	private float stunTime;
 	Rigidbody rBody;
 	// Use this for initialization
 	void Start () {
@@ -23,11 +24,21 @@ public class PlayerScript : MonoBehaviour {
 		refinedJump = -1;
 		leftWallCheck = false;
 		rightWallCheck = false;
+		stunTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Moving left and right
+		if (stunTime > 0) {
+			stunTime -= Time.deltaTime;
+			if (stunTime <= 0) {
+				stunTime = 0;
+
+			} else {
+				return;
+			}
+		}
 		bool leftPress = Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A);
 		bool rightPress = Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D);
 		bool upPress = Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W);
@@ -152,6 +163,12 @@ public class PlayerScript : MonoBehaviour {
 			onGround = false;
 			leftWallCheck = false;
 			rightWallCheck = false;
+		}
+	}
+
+	public void stun(float time){
+		if (stunTime <= 0) {
+			stunTime += time;
 		}
 	}
 }
