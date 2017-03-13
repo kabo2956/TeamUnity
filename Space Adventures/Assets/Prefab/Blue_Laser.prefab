@@ -98,9 +98,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 9e4c311d3ca6b4bc4af4e931372029e1, type: 2}
   - {fileID: 2100000, guid: 23ab01ea9fcca4a64bfaa6fe96a299de, type: 2}
   trap: {fileID: 1937350027129386, guid: af8e1d3a9c039473987cfecfd004a8b7, type: 2}
-  isRed: 2
+  color: 2
   maxPower: 1
-  minPower: 4
+  minPower: 3
 --- !u!136 &136243321714026460
 CapsuleCollider:
   m_ObjectHideFlags: 1
