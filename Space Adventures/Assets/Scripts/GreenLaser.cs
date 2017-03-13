@@ -8,6 +8,8 @@ public class GreenLaser : MonoBehaviour {
 	public float maxTime, minTime;
 	public Material[] mat;
 	public GameObject trap;
+	public int isRed;
+	public float maxPower, minPower;
 	// Use this for initialization
 	void Start () {
 		activated = true;
@@ -34,10 +36,14 @@ public class GreenLaser : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.name == "Player") {
-			Vector3 pos = gameObject.transform.position;
-			GameObject g = Instantiate(trap, gameObject.transform);
-			g.transform.position = new Vector3 (pos.x - 4, Camera.main.transform.position.y + 7, 0);
-			g.transform.SetParent (null);
+			if (isRed == 1) {
+				Vector3 pos = gameObject.transform.position;
+				GameObject g = Instantiate (trap, gameObject.transform);
+				g.transform.position = new Vector3 (pos.x - 4, Camera.main.transform.position.y + 7, 0);
+				g.transform.SetParent (null);
+			} else {
+				coll.gameObject.GetComponent<Rigidbody> ().AddForce (-Random.Range (minPower, maxPower), -8, 0);
+			}
 			Destroy (gameObject);
 		}
 	}
