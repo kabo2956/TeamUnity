@@ -168,51 +168,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &300317611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 300317613}
-  - component: {fileID: 300317612}
-  m_Layer: 0
-  m_Name: NetworkManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &300317612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300317611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7957c5bb792809438f70619d8ac7bb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameName: Space Adventures
-  btnX: 0
-  btnY: 0
-  btnM: 0
-  btnH: 0
---- !u!4 &300317613
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 300317611}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9893666, y: -1.1139616, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1079206970
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,10 +334,6 @@ GameObject:
   - component: {fileID: 1539493420}
   - component: {fileID: 1539493421}
   - component: {fileID: 1539493419}
-  - component: {fileID: 1539493425}
-  - component: {fileID: 1539493424}
-  - component: {fileID: 1539493423}
-  - component: {fileID: 1539493422}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -477,54 +428,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!148 &1539493422
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539493416}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1539493418}
-  m_ViewID:
-    m_ID: 4
-    m_Type: 1
---- !u!148 &1539493423
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539493416}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1539493418}
-  m_ViewID:
-    m_ID: 3
-    m_Type: 1
---- !u!148 &1539493424
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539493416}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1539493418}
-  m_ViewID:
-    m_ID: 2
-    m_Type: 1
---- !u!148 &1539493425
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1539493416}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 1539493418}
-  m_ViewID:
-    m_ID: 1
-    m_Type: 1
 --- !u!1 &1977998994
 GameObject:
   m_ObjectHideFlags: 0
