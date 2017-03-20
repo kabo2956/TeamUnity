@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour {
 	//float dX, dY;
 	bool onGround,leftWallCheck,rightWallCheck;
 	int spacePress;
-	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump;
+	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump, accelFactor;
 	private float stunTime;
 	Rigidbody rBody;
 	// Use this for initialization
@@ -25,6 +25,7 @@ public class PlayerScript : MonoBehaviour {
 		leftWallCheck = false;
 		rightWallCheck = false;
 		stunTime = 0;
+		accelFactor = 1;
 	}
 	
 	// Update is called once per frame
@@ -55,9 +56,9 @@ public class PlayerScript : MonoBehaviour {
 		if (leftPress && !rightPress && !leftWallCheck) {
 			if (vel.x > -maxVelocity) {
 				if (onGround)
-					rBody.AddForce (new Vector3 (-10, 0, 0));
+					rBody.AddForce (new Vector3 (-10*accelFactor, 0, 0));
 				else
-					rBody.AddForce (new Vector3 (-4, 0, 0));
+					rBody.AddForce (new Vector3 (-4*accelFactor, 0, 0));
 			} else if (onGround) {
 				if (vel.x * 13 / 14 > -maxVelocity) {
 					rBody.velocity = new Vector3 (vel.x * 13 / 14, vel.y, 0);
@@ -68,9 +69,9 @@ public class PlayerScript : MonoBehaviour {
 		} else if (rightPress && !leftPress && !rightWallCheck) {
 			if (vel.x < maxVelocity) {
 				if (onGround)
-					rBody.AddForce (new Vector3 (10, 0, 0));
+					rBody.AddForce (new Vector3 (10*accelFactor, 0, 0));
 				else
-					rBody.AddForce (new Vector3 (4, 0, 0));
+					rBody.AddForce (new Vector3 (4*accelFactor, 0, 0));
 			} else if (onGround) {
 				if (vel.x * 13 / 14 < maxVelocity) {
 					rBody.velocity = new Vector3 (vel.x * 13 / 14, vel.y, 0);
@@ -136,15 +137,15 @@ public class PlayerScript : MonoBehaviour {
 
 
 	void OnCollisionStay(Collision collision){
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > 1/2) {
-				onGround = true;
-			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0, 0)) > Mathf.Sqrt(3)/2) {
-				leftWallCheck = true;
-			}
-			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0, 0)) > Mathf.Sqrt(3)/2) {
-				rightWallCheck = true;
-			}
+		if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > 1 / 2) {
+			onGround = true;
+		}
+		if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (1, 0, 0)) > Mathf.Sqrt (3) / 2) {
+			leftWallCheck = true;
+		}
+		if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (-1, 0, 0)) > Mathf.Sqrt (3) / 2) {
+			rightWallCheck = true;
+		}
 	}
 
 
@@ -170,5 +171,12 @@ public class PlayerScript : MonoBehaviour {
 		if (stunTime <= 0) {
 			stunTime += time;
 		}
+	}
+
+	public void modifySpeed(float factor){
+		maxVelocity *= factor;
+		accelFactor *= factor;
+		runVelocity *= factor;
+		walkVelocity *= factor;
 	}
 }

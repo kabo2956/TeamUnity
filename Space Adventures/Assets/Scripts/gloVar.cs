@@ -13,6 +13,7 @@ public class gloVar : MonoBehaviour {
 	public static float animationSpeed = 1/60.0f;
 	// Use this for initialization
 	void Start () {
+		
 	}
 	
 	// Update is called once per frame
