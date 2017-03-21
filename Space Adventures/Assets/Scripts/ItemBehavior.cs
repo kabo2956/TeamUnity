@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemBehavior : MonoBehaviour {
 	public GameObject grav;
 	GameObject g;
-	public float speedUpBy;
+	public float factor;
 	public int self;
 	// Use this for initialization
 	void Start () {
@@ -22,8 +22,13 @@ public class ItemBehavior : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.name.Length >= 6 && coll.gameObject.name.Substring(0,6) == "Player") {
+			PlayerScript p = coll.gameObject.GetComponent<PlayerScript> ();
 			if (self == 0) {
-				coll.gameObject.GetComponent<PlayerScript> ().modifySpeed (speedUpBy);
+				p.modifySpeed (factor);
+			} else if (self == 1) {
+				p.modifyJump (factor);
+			} else if (self == 2) {
+				p.modifyGravity (factor);
 			}
 			Destroy (g);
 			Destroy (gameObject);

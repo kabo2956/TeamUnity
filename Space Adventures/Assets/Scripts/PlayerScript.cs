@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour {
 	//float dX, dY;
 	bool onGround,leftWallCheck,rightWallCheck;
 	int spacePress;
-	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump, accelFactor;
+	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump, accelFactor, personalGravity;
 	private float stunTime;
 	Rigidbody rBody;
 	// Use this for initialization
@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour {
 		rightWallCheck = false;
 		stunTime = 0;
 		accelFactor = 1;
+		personalGravity = 1;
 	}
 	
 	// Update is called once per frame
@@ -53,6 +54,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 		//float dX = vel.x;
 		//print (vel.x);
+		rBody.AddForce(0,gloVar.gravity*(1-personalGravity),0);
 		if (leftPress && !rightPress && !leftWallCheck) {
 			if (vel.x > -maxVelocity) {
 				if (onGround)
@@ -81,6 +83,19 @@ public class PlayerScript : MonoBehaviour {
 			}
 		} else if (onGround){
 			rBody.velocity = new Vector3 (vel.x*13/14, vel.y, 0);
+		}
+		if (upPress && !downPress) {
+			if (vel.y > maxVelocity / 4 && personalGravity * gloVar.gravity < 3) {
+				rBody.velocity = new Vector3 (vel.x, vel.y * 13 / 14, 0);
+			} else if (personalGravity * gloVar.gravity < 3) {
+				rBody.AddForce (0, 1 * accelFactor, 0);
+			}
+		} else if (downPress && !upPress) {
+			if (vel.y < -maxVelocity / 4 && personalGravity * gloVar.gravity < 3) {
+				rBody.velocity = new Vector3 (vel.x, vel.y * 13 / 14, 0);
+			} else if (personalGravity * gloVar.gravity < 3) {
+				rBody.AddForce (0, -1 * accelFactor, 0);
+			}
 		}
 		//There's a possibility that the person may hit space when the player is close to the ground. Let's account for that.
 		if (Input.GetKey (KeyCode.Space)) {
@@ -174,9 +189,28 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	public void modifySpeed(float factor){
-		maxVelocity *= factor;
 		accelFactor *= factor;
 		runVelocity *= factor;
 		walkVelocity *= factor;
+		if (walkVelocity > 18) {
+			walkVelocity = 18;
+			accelFactor = 3;
+			runVelocity = 27;
+		}
+	}
+
+	public void modifyJump(float factor){
+		jumpForce *= factor;
+		if (jumpForce > 750) {
+			jumpForce = 750;
+		}
+	}
+
+	/** Modifies personal gravity. */
+	public void modifyGravity(float factor){
+		personalGravity *= factor;
+		if (personalGravity < 0.2f) {
+			personalGravity = 0.2f;
+		}
 	}
 }
