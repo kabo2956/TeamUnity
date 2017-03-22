@@ -11,8 +11,11 @@ public class ItemBehavior : MonoBehaviour {
 	void Start () {
 		g = Instantiate (grav);
 		g.GetComponent<BoxCollider> ().size = gameObject.transform.localScale;
-		Vector3 pos = gameObject.transform.position;
-		g.transform.position = new Vector3(pos.x*0.5f, pos.y, pos.z);
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+		for (int i = 0; i < players.Length; i++) {
+			Physics.IgnoreCollision (g.GetComponent<Collider> (), players [i].GetComponent<Collider> ());
+		}
+		g.transform.position = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame

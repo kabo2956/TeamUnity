@@ -54,7 +54,8 @@ public class PlayerScript : MonoBehaviour {
 		}
 		//float dX = vel.x;
 		//print (vel.x);
-		rBody.AddForce(0,gloVar.gravity*(1-personalGravity),0);
+		//Personal Gravity
+		rBody.AddForce(0,gloVar.gravity*(1-personalGravity)*rBody.mass,0);
 		if (leftPress && !rightPress && !leftWallCheck) {
 			if (vel.x > -maxVelocity) {
 				if (onGround)
