@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
 	//float dX, dY;
-	bool onGround,leftWallCheck,rightWallCheck;
+	public bool isDummy;
+	bool onGround,leftWallCheck,rightWallCheck, controlPress, isRight;
 	int spacePress;
 	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump, accelFactor, personalGravity;
-	private float stunTime;
+	private float stunTime, itemThrowAngle, holdSpeed, untilDequeue;
+	public GameObject itemCarrying;
+	private Queue<GameObject> itemsRemoved;
+	private Queue<float> escapeFromQueue;
 	Rigidbody rBody;
 	// Use this for initialization
 	void Start () {
@@ -27,6 +31,12 @@ public class PlayerScript : MonoBehaviour {
 		stunTime = 0;
 		accelFactor = 1;
 		personalGravity = 1;
+		untilDequeue = -1.5f;
+		if (isDummy) {
+			stunTime = float.MaxValue;
+		}
+		itemsRemoved = new Queue<GameObject> ();
+		escapeFromQueue = new Queue<float> ();
 	}
 	
 	// Update is called once per frame
@@ -45,6 +55,7 @@ public class PlayerScript : MonoBehaviour {
 		bool rightPress = Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D);
 		bool upPress = Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W);
 		bool downPress = Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S);
+		controlPress = Input.GetKey (KeyCode.LeftControl) || Input.GetKey (KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand);
 		Vector3 vel = rBody.velocity;
 		//Determine if you're running first.
 		if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
@@ -57,6 +68,7 @@ public class PlayerScript : MonoBehaviour {
 		//Personal Gravity
 		rBody.AddForce(0,gloVar.gravity*(1-personalGravity)*rBody.mass,0);
 		if (leftPress && !rightPress && !leftWallCheck) {
+			isRight = false;
 			if (vel.x > -maxVelocity) {
 				if (onGround)
 					rBody.AddForce (new Vector3 (-10*accelFactor, 0, 0));
@@ -70,6 +82,7 @@ public class PlayerScript : MonoBehaviour {
 				}
 			}
 		} else if (rightPress && !leftPress && !rightWallCheck) {
+			isRight = true;
 			if (vel.x < maxVelocity) {
 				if (onGround)
 					rBody.AddForce (new Vector3 (10*accelFactor, 0, 0));
@@ -149,6 +162,65 @@ public class PlayerScript : MonoBehaviour {
 			else
 				rBody.AddForce (new Vector3 (0, Physics2D.gravity.y * 0.4f, 0));
 		}
+		//Item carrying
+		if (controlPress && itemCarrying != null) {
+			Vector3 newPosition = rBody.position;
+			if (upPress && !downPress) {
+				if (gloVar.throwingHandler) {
+					itemThrowAngle = Mathf.PI / 4; //45 Degrees
+				} else {
+					itemThrowAngle += Mathf.PI * Time.deltaTime;
+					if (itemThrowAngle > Mathf.PI / 2) {
+						itemThrowAngle = Mathf.PI / 2;
+					}
+				}
+			} else if (downPress && !upPress) {
+				if (gloVar.throwingHandler) {
+					itemThrowAngle = -Mathf.PI / 4;
+				} else {
+					itemThrowAngle -= Mathf.PI * Time.deltaTime;
+					if (itemThrowAngle < -Mathf.PI * 5 / 12) {
+						itemThrowAngle = -Mathf.PI * 5 / 12;
+					}
+				}
+			} else {
+				if (gloVar.throwingHandler) {
+					itemThrowAngle = 0;
+				}
+			}
+			Vector3 scale = gameObject.transform.localScale;
+			if (isRight) {
+				newPosition = new Vector3 (newPosition.x + (scale.x) * Mathf.Cos (itemThrowAngle), newPosition.y + (scale.y) * Mathf.Sin (itemThrowAngle) * 0.8f, newPosition.z); 
+			} else {
+				newPosition = new Vector3 (newPosition.x - (scale.x) * Mathf.Cos (itemThrowAngle), newPosition.y + (scale.y) * Mathf.Sin (itemThrowAngle) * 0.8f, newPosition.z);
+			}
+			itemCarrying.GetComponent<Rigidbody>().MovePosition(newPosition);
+		} else if (itemCarrying != null) {
+			float force = 300.0f;
+			if (maxVelocity == runVelocity) {
+				force *= 1.5f;
+			}
+			if (isRight) {
+				itemCarrying.GetComponent<ItemBehavior> ().g.GetComponent<Rigidbody> ().AddForce (new Vector3 (Mathf.Cos (itemThrowAngle) * force, Mathf.Sin (itemThrowAngle) * force, 0));
+			} else {
+				itemCarrying.GetComponent<ItemBehavior> ().g.GetComponent<Rigidbody> ().AddForce (new Vector3 (-Mathf.Cos (itemThrowAngle) * force, Mathf.Sin (itemThrowAngle) * force, 0));
+			}
+			itemCarrying.GetComponent<ItemBehavior> ().beingCarried = false;
+			itemsRemoved.Enqueue (itemCarrying);
+			escapeFromQueue.Enqueue (0.1f);
+			itemCarrying = null;
+		}
+		if (escapeFromQueue.ToArray ().Length > 0 && untilDequeue <= -1) {
+			untilDequeue = escapeFromQueue.Dequeue ();
+		}
+		if (untilDequeue > 0) {
+			untilDequeue -= Time.deltaTime;
+			if (untilDequeue <= 0) {
+				GameObject g = itemsRemoved.Dequeue ();
+				Physics.IgnoreCollision (g.GetComponent<Collider> (), gameObject.GetComponent<Collider> (), false);
+				untilDequeue = -1.5f;
+			}
+		}
 	}
 
 
@@ -213,5 +285,9 @@ public class PlayerScript : MonoBehaviour {
 		if (personalGravity < 0.2f) {
 			personalGravity = 0.2f;
 		}
+	}
+
+	public bool getControlPress(){
+		return controlPress;
 	}
 }

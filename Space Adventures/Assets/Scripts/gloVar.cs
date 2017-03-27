@@ -10,6 +10,7 @@ using UnityEngine;
 public class gloVar : MonoBehaviour {
 	public static float gravity = 10f;
 	public static int isPressed = 2;
+	public static bool throwingHandler = false;
 	public static float animationSpeed = 1/60.0f;
 	// Use this for initialization
 	void Start () {
