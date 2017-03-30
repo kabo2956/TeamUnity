@@ -11,7 +11,7 @@ public class Asteroid : MonoBehaviour {
 		gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (Random.Range (minSpeedX, maxSpeedX), Random.Range (-5, 0), 0);
 		gameObject.GetComponent<Rigidbody> ().drag = Random.Range (0, 1);
 		Instantiate (particleEmitt);
-		Physics.IgnoreCollision(particleEmitt.
+		//Physics.IgnoreCollision(particleEmitt.
 	}
 	
 	// Update is called once per frame

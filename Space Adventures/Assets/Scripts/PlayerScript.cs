@@ -263,7 +263,7 @@ public class PlayerScript : MonoBehaviour {
 		}
 	}
 
-	public void modifySpeed(float factor){
+	public void modifySpeed(float factor, float minExpired, float maxExpired){
 		accelFactor *= factor;
 		runVelocity *= factor;
 		walkVelocity *= factor;
@@ -272,9 +272,10 @@ public class PlayerScript : MonoBehaviour {
 			accelFactor = 3;
 			runVelocity = 27;
 		}
+
 	}
 
-	public void modifyJump(float factor){
+	public void modifyJump(float factor, float minExpired, float maxExpired){
 		jumpForce *= factor;
 		if (jumpForce > 750) {
 			jumpForce = 750;
@@ -282,7 +283,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	/** Modifies personal gravity. */
-	public void modifyGravity(float factor){
+	public void modifyGravity(float factor, float minExpired, float maxExpired){
 		personalGravity *= factor;
 		if (personalGravity < 0.2f) {
 			personalGravity = 0.2f;
