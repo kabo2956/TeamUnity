@@ -34,7 +34,7 @@ public class ItemBehavior : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider coll){
-		if (coll.gameObject.name.Length >= 6 && coll.gameObject.name.Substring(0,6) == "Player") {
+		if (coll.gameObject.name.Length >= 6 && coll.gameObject.tag == "Player") {
 			PlayerScript p = coll.gameObject.GetComponent<PlayerScript> ();
 			if (!p.getControlPress() || (p.itemCarrying) != null ) {
 				if (self == 0) {

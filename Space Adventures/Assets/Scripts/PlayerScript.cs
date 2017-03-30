@@ -12,6 +12,8 @@ public class PlayerScript : MonoBehaviour {
 	public GameObject itemCarrying;
 	private Queue<GameObject> itemsRemoved;
 	private Queue<float> escapeFromQueue;
+	private LinkedList<float> timeUntilExpired;
+	private LinkedList<int> itemUsed;
 	Rigidbody rBody;
 	// Use this for initialization
 	void Start () {
