@@ -14,11 +14,13 @@ public class PlayerScript : MonoBehaviour {
 	private Queue<float> escapeFromQueue;
 	private List<float> timeUntilExpired, factors;
 	private List<int> itemUsed;
+	private Animator playerAnimator;
 	Rigidbody rBody;
 	// Use this for initialization
 	void Start () {
 		//dX = 0;
 		//dY = 0;
+		playerAnimator = GetComponent<Animator> ();
 		Physics.gravity = new Vector2 (0, -gloVar.gravity);
 		onGround = false;
 		spacePress = 0;
@@ -73,12 +75,18 @@ public class PlayerScript : MonoBehaviour {
 		//Personal Gravity
 		rBody.AddForce(0,gloVar.gravity*(1-personalGravity)*rBody.mass,0);
 		if (leftPress && !rightPress && !leftWallCheck) {
+			playerAnimator.SetFloat ("SpeedRight",1);
+			gameObject.transform.localScale = new Vector3 (-1, 1, 1);
 			isRight = false;
 			if (vel.x > -maxVelocity) {
-				if (onGround)
-					rBody.AddForce (new Vector3 (-10*accelFactor, 0, 0));
-				else
-					rBody.AddForce (new Vector3 (-4*accelFactor, 0, 0));
+				if (onGround) {
+					rBody.AddForce (new Vector3 (-10 * accelFactor, 0, 0));
+					playerAnimator.SetBool ("Grounded", true);
+				} 
+				else {
+					rBody.AddForce (new Vector3 (-4 * accelFactor, 0, 0));
+					playerAnimator.SetBool ("Grounded", false);
+				}
 			} else if (onGround) {
 				if (vel.x * 13 / 14 > -maxVelocity) {
 					rBody.velocity = new Vector3 (vel.x * 13 / 14, vel.y, 0);
@@ -87,12 +95,18 @@ public class PlayerScript : MonoBehaviour {
 				}
 			}
 		} else if (rightPress && !leftPress && !rightWallCheck) {
+			playerAnimator.SetFloat ("SpeedRight",1);
+			gameObject.transform.localScale = new Vector3 (1, 1, 1);
 			isRight = true;
 			if (vel.x < maxVelocity) {
-				if (onGround)
-					rBody.AddForce (new Vector3 (10*accelFactor, 0, 0));
-				else
-					rBody.AddForce (new Vector3 (4*accelFactor, 0, 0));
+				if (onGround) {
+					rBody.AddForce (new Vector3 (10 * accelFactor, 0, 0));
+					playerAnimator.SetBool ("Grounded", true);
+				} 
+				else {
+					rBody.AddForce (new Vector3 (4 * accelFactor, 0, 0));
+					playerAnimator.SetBool ("Grounded", false);
+				}
 			} else if (onGround) {
 				if (vel.x * 13 / 14 < maxVelocity) {
 					rBody.velocity = new Vector3 (vel.x * 13 / 14, vel.y, 0);
@@ -102,6 +116,11 @@ public class PlayerScript : MonoBehaviour {
 			}
 		} else if (onGround){
 			rBody.velocity = new Vector3 (vel.x*13/14, vel.y, 0);
+			playerAnimator.SetBool ("Grounded", true);
+			if (Mathf.Abs (rBody.velocity.x) < 0.1) {
+				playerAnimator.SetFloat ("SpeedRight", 0);
+				playerAnimator.SetFloat ("SpeedLeft", 0);
+			}
 		}
 		if (upPress && !downPress) {
 			if (vel.y > maxVelocity / 4 && personalGravity * gloVar.gravity < 3) {

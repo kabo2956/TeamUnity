@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 4e5617e1f8b374c7db6b1e0d9b6370df
-timeCreated: 1490905181
+timeCreated: 1490906795
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: spritesheet_players_0
     21300002: spritesheet_players_1
     21300004: spritesheet_players_2
+    21300006: spritesheet_players_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -109,6 +110,19 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_players_3
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 256
+        width: 108
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 6}
       outline: []
       tessellationDetail: 0
     outline: []
