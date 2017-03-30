@@ -5,18 +5,18 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour {
 	public GameObject[] items;
 	public float minSpeedX, maxSpeedX;
-	public GameObject particleEmitt;
+	//public GameObject particleEmitt;
 	// Use this for initialization
 	void Start () {
 		gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (Random.Range (minSpeedX, maxSpeedX), Random.Range (-5, 0), 0);
 		gameObject.GetComponent<Rigidbody> ().drag = Random.Range (0, 1);
-		Instantiate (particleEmitt);
+		//Instantiate (particleEmitt);
 		//Physics.IgnoreCollision(particleEmitt.
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		particleEmitt.transform.position = gameObject.transform.position;
+		//particleEmitt.transform.position = gameObject.transform.position;
 	}
 
 	void OnCollisionEnter (Collision coll){
