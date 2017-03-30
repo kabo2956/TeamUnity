@@ -9,6 +9,7 @@ public class ItemBehavior : MonoBehaviour {
 	public int self;
 	public bool beingCarried;
 	public Vector3 prevPosition;
+	public float minExpired, maxExpired;
 	// Use this for initialization
 	void Start () {
 		g = Instantiate (grav);
@@ -38,11 +39,11 @@ public class ItemBehavior : MonoBehaviour {
 			PlayerScript p = coll.gameObject.GetComponent<PlayerScript> ();
 			if (!p.getControlPress() || (p.itemCarrying) != null ) {
 				if (self == 0) {
-					p.modifySpeed (factor);
+					p.modifySpeed (factor, minExpired, maxExpired);
 				} else if (self == 1) {
-					p.modifyJump (factor);
+					p.modifyJump (factor, minExpired, maxExpired);
 				} else if (self == 2) {
-					p.modifyGravity (factor);
+					p.modifyGravity (factor, minExpired, maxExpired);
 				}
 				Destroy (g);
 				Destroy (gameObject);
