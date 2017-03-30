@@ -12,8 +12,8 @@ public class PlayerScript : MonoBehaviour {
 	public GameObject itemCarrying;
 	private Queue<GameObject> itemsRemoved;
 	private Queue<float> escapeFromQueue;
-	private LinkedList<float> timeUntilExpired;
-	private LinkedList<int> itemUsed;
+	private List<float> timeUntilExpired, factors;
+	private List<int> itemUsed;
 	Rigidbody rBody;
 	// Use this for initialization
 	void Start () {
@@ -39,6 +39,9 @@ public class PlayerScript : MonoBehaviour {
 		}
 		itemsRemoved = new Queue<GameObject> ();
 		escapeFromQueue = new Queue<float> ();
+		timeUntilExpired = new List<float> ();
+		factors = new List<float> ();
+		itemUsed = new List<int> ();
 	}
 	
 	// Update is called once per frame
@@ -223,6 +226,23 @@ public class PlayerScript : MonoBehaviour {
 				untilDequeue = -1.5f;
 			}
 		}
+		//Check to see if stats expired.
+		for (int i = 0; i < itemUsed.Count; i++) {
+			timeUntilExpired [i] -= Time.deltaTime;
+			if (timeUntilExpired [i] <= 0) {
+				if (itemUsed [i] == 0) {
+					modifySpeed (1 / factors [i], -1, -1);
+				} else if (itemUsed [i] == 1) {
+					modifyJump (1 / factors [i], -1, -1);
+				} else {
+					modifyGravity (1 / factors [i], -1, -1);
+				}
+				timeUntilExpired.RemoveAt (i);
+				factors.RemoveAt (i);
+				itemUsed.RemoveAt (i);
+				i--;
+			}
+		}
 	}
 
 
@@ -272,13 +292,22 @@ public class PlayerScript : MonoBehaviour {
 			accelFactor = 3;
 			runVelocity = 27;
 		}
-
+		if (minExpired >= 0) {
+			itemUsed.Add (0);
+			factors.Add (factor);
+			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+		}
 	}
 
 	public void modifyJump(float factor, float minExpired, float maxExpired){
 		jumpForce *= factor;
 		if (jumpForce > 750) {
 			jumpForce = 750;
+		}
+		if (minExpired >= 0) {
+			itemUsed.Add (1);
+			factors.Add (factor);
+			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
 		}
 	}
 
@@ -287,6 +316,11 @@ public class PlayerScript : MonoBehaviour {
 		personalGravity *= factor;
 		if (personalGravity < 0.2f) {
 			personalGravity = 0.2f;
+		}
+		if (minExpired >= 0) {
+			factors.Add (factor);
+			itemUsed.Add (2);
+			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
 		}
 	}
 
