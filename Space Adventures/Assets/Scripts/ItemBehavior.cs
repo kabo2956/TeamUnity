@@ -12,6 +12,7 @@ public class ItemBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		g = Instantiate (grav);
+		g.GetComponent<Rigidbody> ().velocity = gameObject.GetComponent<Rigidbody> ().velocity;
 		g.GetComponent<BoxCollider> ().size = gameObject.transform.localScale;
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		for (int i = 0; i < players.Length; i++) {
