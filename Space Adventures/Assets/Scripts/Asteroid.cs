@@ -5,18 +5,24 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour {
 	public GameObject[] items;
 	public float minSpeedX, maxSpeedX;
+	public float momentsUntilDestruction;
 	//public GameObject particleEmitt;
 	// Use this for initialization
 	void Start () {
 		gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (Random.Range (minSpeedX, maxSpeedX), Random.Range (-5, 0), 0);
 		gameObject.GetComponent<Rigidbody> ().drag = Random.Range (0, 1);
-		//Instantiate (particleEmitt);
-		//Physics.IgnoreCollision(particleEmitt.
+		momentsUntilDestruction = -1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//particleEmitt.transform.position = gameObject.transform.position;
+		if (momentsUntilDestruction > 0) {
+			momentsUntilDestruction -= Time.deltaTime;
+			if (momentsUntilDestruction <= 0) {
+				Destroy (gameObject);
+			}
+		}
 	}
 
 	void OnCollisionEnter (Collision coll){
@@ -33,6 +39,7 @@ public class Asteroid : MonoBehaviour {
 				g.GetComponent<Rigidbody> ().velocity = new Vector3 (Random.Range(-1,-5), Random.Range (1, 5), 0);
 			}
 		}
-		Destroy (gameObject);
+		gameObject.transform.position = new Vector3 (0, 100, 0);
+		momentsUntilDestruction = 3;
 	}
 }

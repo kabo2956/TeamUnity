@@ -82,8 +82,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grav: {fileID: 1567590282069686, guid: 6d5ed0010818948c4a74c993f28c4034, type: 2}
-  factor: 0.90909094
+  g: {fileID: 0}
+  factor: 0.6666667
   self: 0
+  beingCarried: 0
+  prevPosition: {x: 0, y: 0, z: 0}
+  minExpired: 5
+  maxExpired: 10
 --- !u!212 &212649711383644514
 SpriteRenderer:
   m_ObjectHideFlags: 1
