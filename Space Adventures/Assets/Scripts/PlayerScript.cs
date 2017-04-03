@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour {
 	//float dX, dY;
 	public bool isDummy;
+	public int playerNumber;
 	bool onGround,leftWallCheck,rightWallCheck, controlPress, isRight;
 	int spacePress;
 	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump, accelFactor, personalGravity;
