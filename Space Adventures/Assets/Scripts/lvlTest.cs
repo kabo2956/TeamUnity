@@ -39,7 +39,7 @@ public class lvlTest : MonoBehaviour {
         }
         else if(spawnTransform.position.x - startPos.x > gap & chanceTunnel >= 0.9f) {
             inTunnel = true;
-            Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(180, Vector3.right));
+            Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
             startPos = spawnTransform.position;
         }
         
