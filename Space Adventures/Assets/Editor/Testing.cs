@@ -18,4 +18,11 @@ public class Testing {
 		//The object has a new name
 		Assert.AreEqual(newGameObjectName, gameObject.name);
 	}
+
+	[Test]
+	public void AsteroidTest() {
+		GameObject g = GameObject.Instantiate (Resources.Load ("Prefab/Items/Asteroid"));
+		Assert.AreEqual ("Asteroid", g.name.Substring (0, 8));
+
+	}
 }
