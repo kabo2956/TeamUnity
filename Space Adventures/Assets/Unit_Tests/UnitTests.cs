@@ -75,7 +75,6 @@ public class UnitTests : MonoBehaviour {
 
 	void PlayerInitAssertions () {
 		Assert.AreEqual (6, (int)(player.GetComponent<PlayerScript> ().getValue ("walkVelocity")));
-		print ("Testing that increasing the speed of the player works.");
 		PlayerModifySpeedCheckUp ();
 		print ("Same for decreasing the speed.");
 		PlayerModifySpeedCheckDown ();
@@ -90,6 +89,7 @@ public class UnitTests : MonoBehaviour {
 	}
 
 	void PlayerModifySpeedCheckUp() {
+		print ("Testing that increasing the speed of the player works.");
 		float prevWalkVel = player.GetComponent<PlayerScript> ().getValue ("walkVelocity");
 		float prevRunVel = player.GetComponent<PlayerScript> ().getValue ("runVelocity");
 		float prevAccelFactor = player.GetComponent<PlayerScript> ().getValue ("accelFactor");
