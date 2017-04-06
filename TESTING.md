@@ -1,5 +1,7 @@
 Who: Kaleb Bodisch, Chance Roberts, Cale Anderson, Tamim Sha
+
 Title: Space Adventures
+
 Vision:To create an online competitive multiplayer runner game that we all would enjoy to play!
 
 
