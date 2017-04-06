@@ -303,40 +303,50 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	public void modifySpeed(float factor, float minExpired, float maxExpired){
-		accelFactor *= factor;
-		runVelocity *= factor;
-		walkVelocity *= factor;
-		if (walkVelocity > 18) {
-			walkVelocity = 18;
-			accelFactor = 3;
-			runVelocity = 27;
-		}
-		if (minExpired >= 0) {
-			itemUsed.Add (0);
-			factors.Add (factor);
-			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+		if (factor > 0) {
+			float prevWalkVel = walkVelocity;
+			accelFactor *= factor;
+			runVelocity *= factor;
+			walkVelocity *= factor;
+			if (walkVelocity > 18) {
+				walkVelocity = 18;
+				accelFactor = 3;
+				runVelocity = 27;
+				factor = 18 / prevWalkVel;
+			}
+			if (minExpired > 0) {
+				itemUsed.Add (0);
+				factors.Add (factor);
+				timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+			}
 		}
 	}
 
 	public void modifyJump(float factor, float minExpired, float maxExpired){
-		jumpForce *= factor;
-		if (jumpForce > 750) {
-			jumpForce = 750;
-		}
-		if (minExpired >= 0) {
-			itemUsed.Add (1);
-			factors.Add (factor);
-			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+		if (factor > 0) {
+			float prevJumpForce = jumpForce;
+			jumpForce *= factor;
+			if (jumpForce > 750) {
+				jumpForce = 750;
+				factor = 750 / prevJumpForce;
+			}
+			if (minExpired > 0) {
+				itemUsed.Add (1);
+				factors.Add (factor);
+				timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+			}
 		}
 	}
 
 	/** Modifies personal gravity. */
 	public void modifyGravity(float factor, float minExpired, float maxExpired){
+		float prevPerGrav = personalGravity;
 		personalGravity *= factor;
 		if (personalGravity < 0.2f) {
 			personalGravity = 0.2f;
+			factor = 0.2f / prevPerGrav;
 		}
-		if (minExpired >= 0) {
+		if (minExpired > 0) {
 			factors.Add (factor);
 			itemUsed.Add (2);
 			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
@@ -345,5 +355,24 @@ public class PlayerScript : MonoBehaviour {
 
 	public bool getControlPress(){
 		return controlPress;
+	}
+
+	public float getValue(string value){
+		//Use only for testing purposes.
+		if (value == "walkVelocity")
+			return(walkVelocity);
+		if (value == "runVelocity")
+			return(runVelocity);
+		if (value == "maxVelocity")
+			return(maxVelocity);
+		if (value == "jumpForce")
+			return(jumpForce);
+		if (value == "personalGravity")
+			return(personalGravity);
+		if (value == "stunTime")
+			return(stunTime);
+		if (value == "accelFactor")
+			return(accelFactor);
+		return(-1);
 	}
 }

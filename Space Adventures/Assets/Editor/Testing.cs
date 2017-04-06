@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 public class Testing {
 
+
 	[Test]
 	public void EditorTest() {
 		//Arrange
@@ -20,9 +21,12 @@ public class Testing {
 	}
 
 	[Test]
-	public void AsteroidTest() {
+	public void PlayerTest() {
 		//GameObject g = GameObject.Instantiate (Resources.Load ("Prefab/Items/Asteroid"));
 		//Assert.AreEqual ("Asteroid", g.name.Substring (0, 8));
-
+		GameObject player = new GameObject();
+		player.AddComponent<PlayerScript> ();
+		player = GameObject.Instantiate (player);
+		Assert.AreEqual(6, (int)(player.GetComponent<PlayerScript>().getValue("walkVelocity")));
 	}
 }
