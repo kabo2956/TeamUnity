@@ -12,7 +12,19 @@ Automated Test Cases:
    
 ![image](https://github.com/kabo2956/TeamUnity/blob/master/Automatic%20Testing%20Images/WhatTestCasesLookLike.png)
 
+This is what a test case function looks like. Note how there is a print statement at the beginning of the function detailing what the current test case is and the three asserts that check to see if the modifications done by the function called actually worked.
 
+![image](https://github.com/kabo2956/TeamUnity/blob/master/Automatic%20Testing%20Images/TestingSuiteExample.png)
+
+This is what a perfect test suite looks like. Note that the print statements aren't followed by any errors, and the fact that no errors actually show up in the console at all.
+
+![image](https://github.com/kabo2956/TeamUnity/blob/master/Automatic%20Testing%20Images/ExampleofFailureWhileTesting.png)
+
+This is what a failed test case looks like. Note how the error is after the print statement that actually ran so you can easily see which test cases it failed on.
+
+![image](https://github.com/kabo2956/TeamUnity/blob/master/Automatic%20Testing%20Images/ExampleofAssertionFailureWhileWritingTestSuite.png)
+
+You can also easily debug inside the test cases to see what your code has been doing if a test case fails, although errors that show up here are a mix between failed test cases and stuff that may be GameObjects doing what they shouldn't be doing.
 
 User Acceptance Tests:
 
