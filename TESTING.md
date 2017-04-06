@@ -137,4 +137,43 @@ Post-conditions
 
     The user has closed the game
     
+Test 4:
+
+ Use Case Name
+ 
+    Picking Up and Throwing Items
+
+Description
+
+    While the player is playing a game, they can pick up items and throw them.
+
+Pre-conditions
+   
+   The user must already be inside the running game and be near an item
+
+Test steps
+
+    1. Hold the control key while coming in contact with the item.
+    2. Press up and down to manuever the item around for the start of a trajectory.
+    3. Release control to throw the item.
+    
+Expected result
+
+    The user picks up an item, moves it around with up and down, and then throws it when they release control.
+    
+Actual result
+
+    The user picks up an item, moves it around with up and down, and then throws it when they release control.
+
+Status (Pass/Fail)
+
+    Pass
+Notes
+
+    There is a noticeable bug where you can move that item into another object, and if you throw an object while that object is connected in the solid it acts unpredictably. We may or may not need to fix this.
+    
+Post-conditions
+
+    The object has been thrown. The user is not affected by the object at all.
+    
 
