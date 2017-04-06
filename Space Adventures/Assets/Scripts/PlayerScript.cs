@@ -297,7 +297,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	public void stun(float time){
-		if (stunTime <= 0) {
+		if (stunTime <= 0 && time >= 0) {
 			stunTime += time;
 		}
 	}
@@ -374,5 +374,15 @@ public class PlayerScript : MonoBehaviour {
 		if (value == "accelFactor")
 			return(accelFactor);
 		return(-1);
+	}
+
+	public bool getValueB(string value){
+		if (value == "onGround")
+			return(onGround);
+		if (value == "rightWallCheck")
+			return(rightWallCheck);
+		if (value == "leftWallCheck")
+			return(leftWallCheck);
+		return(false);
 	}
 }

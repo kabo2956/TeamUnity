@@ -52,3 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1176594864904542, guid: ae10d6ae7e6394a458fc7fe1550ed490, type: 2}
+  asteroid: {fileID: 1773666281446656, guid: 029b0208fb9af4973812d10c26b59ee4, type: 2}
+  solid: {fileID: 1937350027129386, guid: af8e1d3a9c039473987cfecfd004a8b7, type: 2}

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class UnitTests : MonoBehaviour {
-	public GameObject player;
+	public GameObject player, solid;
 	private float time;
 	private float prevJump, prevWalk, prevGrav;
 	private bool[] testedYet;
@@ -13,17 +13,20 @@ public class UnitTests : MonoBehaviour {
 		Assert.AreEqual (true, true);
 		player = Instantiate (player);
 		testedYet = new bool[100];
+		for (int i = 0; i < testedYet.Length; i++) {
+			testedYet [i] = true;
+		}
 		testedYet [0] = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Physics.gravity = new Vector3(0,0,0);
-		player.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
-		if (time == 0 && !testedYet[0]) {
+		if (time == 0 && !testedYet [0]) {
 			testedYet [0] = true;
 			InitialAssertions ();
 			testedYet [1] = false;
+			Physics.gravity = new Vector3 (0, 0, 0);
+			player.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
 		} else if (time >= 0.025 && !testedYet [1]) {
 			testedYet [1] = true;
 			PlayerPowerupNonPermanenceAssertion ();
@@ -33,6 +36,34 @@ public class UnitTests : MonoBehaviour {
 		} else if (time >= 0.025 && !testedYet [2]) {
 			testedYet [2] = true;
 			PlayerPowerupNonPermanenceAssertion ();
+			solid = Instantiate (solid);
+			solid.GetComponent<Rigidbody> ().freezeRotation = true;
+			player.transform.position = new Vector3 (-1, 0, 0);
+			solid.transform.position = new Vector3 (1, 0, 0);
+			player.GetComponent<Rigidbody> ().velocity = new Vector3 (10, 0, 0);
+			solid.GetComponent<Rigidbody> ().velocity = new Vector3 (-10, 0, 0);
+			time = -Time.deltaTime;
+			testedYet [3] = false;
+		} else if (time >= 0.05 && !testedYet [3]) {
+			testedYet [3] = true;
+			TestPlayerCollisionRight ();
+			solid.transform.position = new Vector3 (-1, 0, 0);
+			player.transform.position = new Vector3 (1, 0, 0);
+			solid.GetComponent<Rigidbody> ().velocity = new Vector3 (10, 0, 0);
+			player.GetComponent<Rigidbody> ().velocity = new Vector3 (-10, 0, 0);
+			testedYet [4] = false;
+			time = -Time.deltaTime;
+		} else if (time >= 0.05 && !testedYet [4]) {
+			testedYet [4] = true;
+			TestPlayerCollisionLeft ();
+			solid.transform.position = new Vector3 (0, -3, 0);
+			player.transform.position = new Vector3 (0, 0, 0);
+			solid.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 10, 0);
+			player.GetComponent<Rigidbody> ().velocity = new Vector3 (0, -10, 0);
+			testedYet [5] = false;
+		} else if (time >= 0.1 && !testedYet [5]) {
+			testedYet [5] = true;
+			TestPlayerCollisionDown ();
 		}
 		time += Time.deltaTime;
 	}
@@ -131,5 +162,26 @@ public class UnitTests : MonoBehaviour {
 		prevGrav = player.GetComponent<PlayerScript> ().getValue ("personalGravity");
 		player.GetComponent<PlayerScript> ().modifyGravity (0, 0.01f, 0.015f);
 		Assert.AreApproximatelyEqual (0.2f, player.GetComponent<PlayerScript> ().getValue ("personalGravity"));
+	}
+
+	void TestPlayerCollisionRight() {
+		print ("Testing collision on right wall for right wall jumping.");
+		Assert.AreEqual(true, player.GetComponent<PlayerScript>().getValueB("rightWallCheck"));
+		Assert.AreEqual(false, player.GetComponent<PlayerScript>().getValueB("leftWallCheck"));
+		Assert.AreEqual(false, player.GetComponent<PlayerScript>().getValueB("onGround"));
+	}
+
+	void TestPlayerCollisionLeft() {
+		print ("Testing collision on left wall for left wall jumping.");
+		Assert.AreEqual(false, player.GetComponent<PlayerScript>().getValueB("rightWallCheck"));
+		Assert.AreEqual(true, player.GetComponent<PlayerScript>().getValueB("leftWallCheck"));
+		Assert.AreEqual(false, player.GetComponent<PlayerScript>().getValueB("onGround"));
+	}
+
+	void TestPlayerCollisionDown() {
+		print ("Testing collision on ground for jumping.");
+		Assert.AreEqual(false, player.GetComponent<PlayerScript>().getValueB("rightWallCheck"));
+		Assert.AreEqual(false, player.GetComponent<PlayerScript>().getValueB("leftWallCheck"));
+		Assert.AreEqual(true, player.GetComponent<PlayerScript>().getValueB("onGround"));
 	}
 }
