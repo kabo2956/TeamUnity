@@ -6,7 +6,7 @@ public class ItemBehavior : MonoBehaviour {
 	public GameObject grav;
 	public GameObject g;
 	public float factor;
-	public int self;
+	public int self, notAllowedToGoHere;
 	public bool beingCarried;
 	public Vector3 prevPosition;
 	public float minExpired, maxExpired;
@@ -37,7 +37,7 @@ public class ItemBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.name.Length >= 6 && coll.gameObject.tag == "Player") {
 			PlayerScript p = coll.gameObject.GetComponent<PlayerScript> ();
-			if (!p.getControlPress() || (p.itemCarrying) != null ) {
+			if (!p.getControlPress () || (p.itemCarrying) != null) {
 				if (self == 0) {
 					p.modifySpeed (factor, minExpired, maxExpired);
 				} else if (self == 1) {
@@ -52,6 +52,16 @@ public class ItemBehavior : MonoBehaviour {
 				Physics.IgnoreCollision (gameObject.GetComponent<Collider> (), coll.gameObject.GetComponent<Collider> ());
 				beingCarried = true;
 			}
-		} 
+		} else if (beingCarried && coll.gameObject.tag == "Solid") {
+			notAllowedToGoHere++;
+		}
+	}
+
+	void OnTriggerExit(Collider coll){
+		if (beingCarried && coll.gameObject.tag == "Solid" && notAllowedToGoHere > 0) {
+			notAllowedToGoHere--;
+			if (notAllowedToGoHere < 0)
+				notAllowedToGoHere = 0;
+		}
 	}
 }

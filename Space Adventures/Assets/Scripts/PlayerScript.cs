@@ -187,7 +187,7 @@ public class PlayerScript : MonoBehaviour {
 				rBody.AddForce (new Vector3 (0, Physics2D.gravity.y * 0.4f, 0));
 		}
 		//Item carrying
-		if (controlPress && itemCarrying != null) {
+		if (itemCarrying != null && (controlPress || itemCarrying.GetComponent<ItemBehavior>().notAllowedToGoHere > 0)) {
 			Vector3 newPosition = rBody.position;
 			if (upPress && !downPress) {
 				if (gloVar.throwingHandler) {
@@ -213,11 +213,7 @@ public class PlayerScript : MonoBehaviour {
 				}
 			}
 			Vector3 scale = gameObject.transform.localScale;
-			if (isRight) {
-				newPosition = new Vector3 (newPosition.x + (scale.x) * Mathf.Cos (itemThrowAngle), newPosition.y + (scale.y) * Mathf.Sin (itemThrowAngle) * 0.8f, newPosition.z); 
-			} else {
-				newPosition = new Vector3 (newPosition.x - (scale.x) * Mathf.Cos (itemThrowAngle), newPosition.y + (scale.y) * Mathf.Sin (itemThrowAngle) * 0.8f, newPosition.z);
-			}
+			newPosition = new Vector3 (newPosition.x + (scale.x) * Mathf.Cos (itemThrowAngle) * 0.8f, newPosition.y + (scale.y) * Mathf.Sin (itemThrowAngle) * 0.8f, newPosition.z); 
 			itemCarrying.GetComponent<Rigidbody>().MovePosition(newPosition);
 		} else if (itemCarrying != null) {
 			float force = 300.0f;
