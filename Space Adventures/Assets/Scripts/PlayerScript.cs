@@ -187,7 +187,7 @@ public class PlayerScript : MonoBehaviour {
 				rBody.AddForce (new Vector3 (0, Physics2D.gravity.y * 0.4f, 0));
 		}
 		//Item carrying
-		if (controlPress && itemCarrying != null) {
+		if (itemCarrying != null && (controlPress || itemCarrying.GetComponent<ItemBehavior>().notAllowedToGoHere > 0)) {
 			Vector3 newPosition = rBody.position;
 			if (upPress && !downPress) {
 				if (gloVar.throwingHandler) {
@@ -213,11 +213,7 @@ public class PlayerScript : MonoBehaviour {
 				}
 			}
 			Vector3 scale = gameObject.transform.localScale;
-			if (isRight) {
-				newPosition = new Vector3 (newPosition.x + (scale.x) * Mathf.Cos (itemThrowAngle), newPosition.y + (scale.y) * Mathf.Sin (itemThrowAngle) * 0.8f, newPosition.z); 
-			} else {
-				newPosition = new Vector3 (newPosition.x - (scale.x) * Mathf.Cos (itemThrowAngle), newPosition.y + (scale.y) * Mathf.Sin (itemThrowAngle) * 0.8f, newPosition.z);
-			}
+			newPosition = new Vector3 (newPosition.x + (scale.x) * Mathf.Cos (itemThrowAngle) * 0.8f, newPosition.y + (scale.y) * Mathf.Sin (itemThrowAngle) * 0.8f, newPosition.z); 
 			itemCarrying.GetComponent<Rigidbody>().MovePosition(newPosition);
 		} else if (itemCarrying != null) {
 			float force = 300.0f;
@@ -297,46 +293,56 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	public void stun(float time){
-		if (stunTime <= 0) {
+		if (stunTime <= 0 && time >= 0) {
 			stunTime += time;
 		}
 	}
 
 	public void modifySpeed(float factor, float minExpired, float maxExpired){
-		accelFactor *= factor;
-		runVelocity *= factor;
-		walkVelocity *= factor;
-		if (walkVelocity > 18) {
-			walkVelocity = 18;
-			accelFactor = 3;
-			runVelocity = 27;
-		}
-		if (minExpired >= 0) {
-			itemUsed.Add (0);
-			factors.Add (factor);
-			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+		if (factor > 0) {
+			float prevWalkVel = walkVelocity;
+			accelFactor *= factor;
+			runVelocity *= factor;
+			walkVelocity *= factor;
+			if (walkVelocity > 18) {
+				walkVelocity = 18;
+				accelFactor = 3;
+				runVelocity = 27;
+				factor = 18 / prevWalkVel;
+			}
+			if (minExpired > 0) {
+				itemUsed.Add (0);
+				factors.Add (factor);
+				timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+			}
 		}
 	}
 
 	public void modifyJump(float factor, float minExpired, float maxExpired){
-		jumpForce *= factor;
-		if (jumpForce > 750) {
-			jumpForce = 750;
-		}
-		if (minExpired >= 0) {
-			itemUsed.Add (1);
-			factors.Add (factor);
-			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+		if (factor > 0) {
+			float prevJumpForce = jumpForce;
+			jumpForce *= factor;
+			if (jumpForce > 750) {
+				jumpForce = 750;
+				factor = 750 / prevJumpForce;
+			}
+			if (minExpired > 0) {
+				itemUsed.Add (1);
+				factors.Add (factor);
+				timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
+			}
 		}
 	}
 
 	/** Modifies personal gravity. */
 	public void modifyGravity(float factor, float minExpired, float maxExpired){
+		float prevPerGrav = personalGravity;
 		personalGravity *= factor;
 		if (personalGravity < 0.2f) {
 			personalGravity = 0.2f;
+			factor = 0.2f / prevPerGrav;
 		}
-		if (minExpired >= 0) {
+		if (minExpired > 0) {
 			factors.Add (factor);
 			itemUsed.Add (2);
 			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
@@ -345,5 +351,34 @@ public class PlayerScript : MonoBehaviour {
 
 	public bool getControlPress(){
 		return controlPress;
+	}
+
+	public float getValue(string value){
+		//Use only for testing purposes.
+		if (value == "walkVelocity")
+			return(walkVelocity);
+		if (value == "runVelocity")
+			return(runVelocity);
+		if (value == "maxVelocity")
+			return(maxVelocity);
+		if (value == "jumpForce")
+			return(jumpForce);
+		if (value == "personalGravity")
+			return(personalGravity);
+		if (value == "stunTime")
+			return(stunTime);
+		if (value == "accelFactor")
+			return(accelFactor);
+		return(-1);
+	}
+
+	public bool getValueB(string value){
+		if (value == "onGround")
+			return(onGround);
+		if (value == "rightWallCheck")
+			return(rightWallCheck);
+		if (value == "leftWallCheck")
+			return(leftWallCheck);
+		return(false);
 	}
 }
