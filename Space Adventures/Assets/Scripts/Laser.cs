@@ -24,11 +24,11 @@ public class Laser : MonoBehaviour {
 			activated = !activated;
 			if (activated) {
 				Vector3 pos = gameObject.transform.position;
-				gameObject.transform.position = new Vector3 (pos.x, pos.y, pos.z - 1);
+				gameObject.transform.position = new Vector3 (pos.x, pos.y, pos.z - 0.125f);
 				gameObject.GetComponent<MeshRenderer> ().material = mat [0];
 			} else if (!activated) {
 				Vector3 pos = gameObject.transform.position;
-				gameObject.transform.position = new Vector3 (pos.x, pos.y, pos.z + 1);
+				gameObject.transform.position = new Vector3 (pos.x, pos.y, pos.z + 0.125f);
 				gameObject.GetComponent<MeshRenderer> ().material = mat [1];
 			}
 		}

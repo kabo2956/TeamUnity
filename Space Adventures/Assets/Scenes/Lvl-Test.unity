@@ -1006,7 +1006,14 @@ MonoBehaviour:
   - {fileID: 1969461504450670, guid: c452c7fa25579d54688f474bbb0aaea6, type: 2}
   - {fileID: 1969461504450670, guid: c452c7fa25579d54688f474bbb0aaea6, type: 2}
   - {fileID: 1969461504450670, guid: c452c7fa25579d54688f474bbb0aaea6, type: 2}
+  lasers:
+  - {fileID: 1702242799325396, guid: 0518d2cedad3d4bf7be379469423e9bd, type: 2}
+  - {fileID: 1330482100138288, guid: abb7f86bd9d6c46278371532e577f96a, type: 2}
+  - {fileID: 1633339799811428, guid: 9583aec4700024045b032c9014a06b0a, type: 2}
+  ship: {fileID: 1820745635619818, guid: 75f66dd0e804e4af2bf4f74c1af95280, type: 2}
   tunnelLength: 20
+  shipSpawnMin: 5
+  shipSpawnMax: 10
   tunnel: {fileID: 1717736915986836, guid: 0481fb6f0c601004d9f18295b4c0d175, type: 2}
 --- !u!4 &1578356701
 Transform:
@@ -1288,6 +1295,14 @@ Prefab:
     - target: {fileID: 4811639636542394, guid: 0481fb6f0c601004d9f18295b4c0d175, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015661520013240, guid: 0481fb6f0c601004d9f18295b4c0d175, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717736915986836, guid: 0481fb6f0c601004d9f18295b4c0d175, type: 2}
+      propertyPath: m_TagString
+      value: Solid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0481fb6f0c601004d9f18295b4c0d175, type: 2}

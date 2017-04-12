@@ -14,13 +14,19 @@ public class lvlTest : MonoBehaviour {
     public float[] spawnHeightRange;
 
     public GameObject[] smallDebris;
+	public GameObject[] lasers;
+	public GameObject ship;
     private bool inTunnel = false;
     public float tunnelLength;
+	public float shipSpawnMin, shipSpawnMax;
+	private float shipSpawn;
+	private bool startShips;
     public GameObject tunnel;
 
 	// Use this for initialization
 	void Start () {
         startPos = spawnTransform.position;
+		shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
 	}
 	
 	// Update is called once per frame
@@ -39,9 +45,35 @@ public class lvlTest : MonoBehaviour {
         }
         else if(spawnTransform.position.x - startPos.x > gap & chanceTunnel >= 0.9f) {
             inTunnel = true;
-            Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
+            GameObject g = Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
+			BoxCollider floor = g.GetComponentInChildren<BoxCollider> ();
+			Vector3 gPos = g.transform.position;
+			g.transform.position = new Vector3 (gPos.x+floor.size.y/2, gPos.y, gPos.z);
             startPos = spawnTransform.position;
+			int numberOfLasersSpawned = Random.Range (0, 4);
+			for (int i = 0; i < numberOfLasersSpawned; i++) {
+				int tSpawned = Random.Range (0, lasers.Length);
+				GameObject l = Instantiate(lasers[tSpawned]);
+				l.transform.position = new Vector3 (gPos.x+Random.Range(0.3f, floor.size.y-0.3f), gPos.y+l.transform.localScale.y, 0.125f);
+			}
         }
-        
+
+		spawnShips ();
+		removeLaggedObjects ();
+	}
+
+	void removeLaggedObjects() {
+		//Remove objects that have crossed the left side of the screen.
+	}
+
+	void spawnShips() {
+		shipSpawn -= Time.deltaTime;
+		if (shipSpawn <= 0) {
+			shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
+			GameObject s = Instantiate (ship);
+			Vector3 sPos = s.transform.position;
+			s.transform.position = new Vector3 (sPos.x, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), sPos.z);
+
+		}
 	}
 }
