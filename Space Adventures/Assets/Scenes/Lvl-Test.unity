@@ -1010,7 +1010,7 @@ MonoBehaviour:
   - {fileID: 1330482100138288, guid: abb7f86bd9d6c46278371532e577f96a, type: 2}
   - {fileID: 1633339799811428, guid: 9583aec4700024045b032c9014a06b0a, type: 2}
   ship: {fileID: 1820745635619818, guid: 75f66dd0e804e4af2bf4f74c1af95280, type: 2}
-  asteroid: {fileID: 0}
+  asteroid: {fileID: 1773666281446656, guid: 029b0208fb9af4973812d10c26b59ee4, type: 2}
   items: []
   tunnelLength: 20
   shipSpawnMin: 5
