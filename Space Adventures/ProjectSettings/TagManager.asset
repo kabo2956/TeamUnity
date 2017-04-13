@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Solid
   - Pickup-Item
+  - Misc
   layers:
   - Default
   - TransparentFX

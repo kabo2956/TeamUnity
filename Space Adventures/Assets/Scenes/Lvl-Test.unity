@@ -940,7 +940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684ca6c803a73004683354017465eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 2104924891}
 --- !u!4 &1543974107
 Transform:
   m_ObjectHideFlags: 0
@@ -1011,9 +1010,13 @@ MonoBehaviour:
   - {fileID: 1330482100138288, guid: abb7f86bd9d6c46278371532e577f96a, type: 2}
   - {fileID: 1633339799811428, guid: 9583aec4700024045b032c9014a06b0a, type: 2}
   ship: {fileID: 1820745635619818, guid: 75f66dd0e804e4af2bf4f74c1af95280, type: 2}
+  asteroid: {fileID: 0}
+  items: []
   tunnelLength: 20
   shipSpawnMin: 5
   shipSpawnMax: 10
+  asteroidSpawnMin: 10
+  asteroidSpawnMax: 20
   tunnel: {fileID: 1717736915986836, guid: 0481fb6f0c601004d9f18295b4c0d175, type: 2}
 --- !u!4 &1578356701
 Transform:
@@ -1298,7 +1301,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1015661520013240, guid: 0481fb6f0c601004d9f18295b4c0d175, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Solid
       objectReference: {fileID: 0}
     - target: {fileID: 1717736915986836, guid: 0481fb6f0c601004d9f18295b4c0d175, type: 2}
       propertyPath: m_TagString
