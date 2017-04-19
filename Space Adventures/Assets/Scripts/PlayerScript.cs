@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerScript : MonoBehaviour {
+public class PlayerScript : NetworkBehaviour {
 	//float dX, dY;
 	public bool isDummy;
 	bool onGround,leftWallCheck,rightWallCheck, controlPress, isRight;
@@ -48,6 +49,9 @@ public class PlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (!isLocalPlayer) {
+			return;
+		}
 		//Moving left and right
 		if (stunTime > 0) {
 			stunTime -= Time.deltaTime;
