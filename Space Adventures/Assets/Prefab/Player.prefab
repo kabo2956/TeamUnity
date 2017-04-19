@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 136155248947353764}
   - component: {fileID: 95289340540736938}
   - component: {fileID: 148224524658997300}
+  - component: {fileID: 114378439879855706}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -90,6 +91,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDummy: 0
   itemCarrying: {fileID: 0}
+--- !u!114 &114378439879855706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176594864904542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 174
+    i1: 16
+    i2: 214
+    i3: 174
+    i4: 126
+    i5: 99
+    i6: 148
+    i7: 164
+    i8: 88
+    i9: 252
+    i10: 127
+    i11: 225
+    i12: 85
+    i13: 14
+    i14: 212
+    i15: 144
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!136 &136155248947353764
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -109,7 +142,7 @@ NetworkView:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1176594864904542}
-  m_Enabled: 1
+  m_Enabled: 0
   m_StateSynchronization: 1
   m_Observed: {fileID: 4300285428036338}
   m_ViewID:
