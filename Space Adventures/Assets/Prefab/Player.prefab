@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54889135253970344}
   - component: {fileID: 136155248947353764}
   - component: {fileID: 95289340540736938}
+  - component: {fileID: 148224524658997300}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1176594864904542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.172597, y: 0.6448186, z: 0}
+  m_LocalPosition: {x: -0.5, y: -1.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +103,18 @@ CapsuleCollider:
   m_Height: 1.1
   m_Direction: 1
   m_Center: {x: 0, y: -0.05, z: 0}
+--- !u!148 &148224524658997300
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176594864904542}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4300285428036338}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!212 &212778387089393744
 SpriteRenderer:
   m_ObjectHideFlags: 1
