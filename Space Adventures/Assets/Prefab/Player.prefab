@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 54889135253970344}
   - component: {fileID: 136155248947353764}
   - component: {fileID: 95289340540736938}
-  - component: {fileID: 148224524658997300}
   - component: {fileID: 114378439879855706}
+  - component: {fileID: 114053589679006216}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -78,6 +78,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114053589679006216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176594864904542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114361744704531732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,7 +142,7 @@ MonoBehaviour:
     i14: 212
     i15: 144
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!136 &136155248947353764
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -136,18 +156,6 @@ CapsuleCollider:
   m_Height: 1.1
   m_Direction: 1
   m_Center: {x: 0, y: -0.05, z: 0}
---- !u!148 &148224524658997300
-NetworkView:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1176594864904542}
-  m_Enabled: 0
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 4300285428036338}
-  m_ViewID:
-    m_ID: 0
-    m_Type: 0
 --- !u!212 &212778387089393744
 SpriteRenderer:
   m_ObjectHideFlags: 1

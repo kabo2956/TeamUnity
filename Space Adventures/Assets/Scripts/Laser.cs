@@ -41,7 +41,7 @@ public class Laser : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider coll){
-		if (coll.gameObject.name == "Player") {
+		if (coll.gameObject.tag == "Player") {
 			if (color == 0) {
 				Vector3 pos = gameObject.transform.position;
 				GameObject g = Instantiate (trap, gameObject.transform);
