@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PlayerScript : NetworkBehaviour {
+public class PlayerScript : NetworkBehaviour { 
 	//float dX, dY;
 	public bool isDummy;
 	bool onGround,leftWallCheck,rightWallCheck, controlPress, isRight;
@@ -16,6 +16,7 @@ public class PlayerScript : NetworkBehaviour {
 	private List<float> timeUntilExpired, factors;
 	private List<int> itemUsed;
 	private Animator playerAnimator;
+	public int player_color; //sets player color 1=green 2=yellow 3=pink 4=blue
 	Rigidbody rBody;
 	// Use this for initialization
 	void Start () {
@@ -49,7 +50,7 @@ public class PlayerScript : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isLocalPlayer) {
+		if (!isLocalPlayer) {		
 			return;
 		}
 		//Moving left and right
