@@ -302,6 +302,7 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/**Modifies speed and acceleration of the player.*/
 	public void modifySpeed(float factor, float minExpired, float maxExpired){
 		if (factor > 0) {
 			float prevWalkVel = walkVelocity;
@@ -322,6 +323,7 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/**Modifies jump power.*/
 	public void modifyJump(float factor, float minExpired, float maxExpired){
 		if (factor > 0) {
 			float prevJumpForce = jumpForce;
@@ -353,10 +355,12 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/**Used for the item to get whether or not it is picked up.*/
 	public bool getControlPress(){
 		return controlPress;
 	}
 
+	/**Use for testing purposes only. (Unit Tests)*/
 	public float getValue(string value){
 		//Use only for testing purposes.
 		if (value == "walkVelocity")
@@ -376,6 +380,7 @@ public class PlayerScript : NetworkBehaviour {
 		return(-1);
 	}
 
+	/**Use for testing purposes only. (Unit Tests)*/
 	public bool getValueB(string value){
 		if (value == "onGround")
 			return(onGround);
