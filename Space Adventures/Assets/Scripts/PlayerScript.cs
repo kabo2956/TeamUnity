@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class PlayerScript : NetworkBehaviour {
 	//float dX, dY;
 	public bool isDummy;
-	bool onGround,leftWallCheck,rightWallCheck, controlPress, isRight;
+	bool onGround,leftWallCheck,rightWallCheck, controlPress, leftPress, rightPress, upPress, downPress, isRight, isRunning;
 	int spacePress;
 	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump, accelFactor, personalGravity;
 	private float stunTime, itemThrowAngle, holdSpeed, untilDequeue;
@@ -17,6 +17,7 @@ public class PlayerScript : NetworkBehaviour {
 	private List<int> itemUsed;
 	private Animator playerAnimator;
 	Rigidbody rBody;
+	Vector3 vel;
 	// Use this for initialization
 	void Start () {
 		//dX = 0;
@@ -62,22 +63,38 @@ public class PlayerScript : NetworkBehaviour {
 				return;
 			}
 		}
-		bool leftPress = Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A);
-		bool rightPress = Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D);
-		bool upPress = Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W);
-		bool downPress = Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S);
+		leftPress = Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A);
+		rightPress = Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D);
+		upPress = Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W);
+		downPress = Input.GetKey (KeyCode.DownArrow) || Input.GetKey (KeyCode.S);
 		controlPress = Input.GetKey (KeyCode.LeftControl) || Input.GetKey (KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand);
-		Vector3 vel = rBody.velocity;
-		//Determine if you're running first.
-		if (Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift)) {
-			maxVelocity = runVelocity;
+		isRunning = Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.RightShift);
+		//There's a possibility that the person may hit space when the player is close to the ground. Let's account for that.
+		if (Input.GetKey (KeyCode.Space)) {
+			spacePress += 1;
 		} else {
-			maxVelocity = walkVelocity;
+			spacePress = 0;
 		}
+		vel = rBody.velocity;
+		//Determine if you're running first.
 		//float dX = vel.x;
 		//print (vel.x);
 		//Personal Gravity
 		rBody.AddForce(0,gloVar.gravity*(1-personalGravity)*rBody.mass,0);
+		HorizontalMovement ();
+		WallSlidingAndJumping ();
+		JumpingAndControllingJump ();
+		//Item carrying
+		ItemCarryingAndHolding ();
+		UpdatePowerups ();
+	}
+
+	void HorizontalMovement(){
+		if (isRunning) {
+			maxVelocity = runVelocity;
+		} else {
+			maxVelocity = walkVelocity;
+		}
 		if (leftPress && !rightPress && !leftWallCheck) {
 			playerAnimator.SetFloat ("SpeedRight",1);
 			gameObject.transform.localScale = new Vector3 (-1, 1, 1);
@@ -139,13 +156,9 @@ public class PlayerScript : NetworkBehaviour {
 				rBody.AddForce (0, -1 * accelFactor, 0);
 			}
 		}
-		//There's a possibility that the person may hit space when the player is close to the ground. Let's account for that.
-		if (Input.GetKey (KeyCode.Space)) {
-			spacePress += 1;
-        } else {
-			spacePress = 0;
-		}
-		//Wall slide
+	}
+
+	void WallSlidingAndJumping(){
 		if (!onGround) {
 			if (leftWallCheck && leftPress) {
 				rBody.AddForce (new Vector3 (-1, -Physics2D.gravity.y * 1 / 3, 0));
@@ -176,6 +189,9 @@ public class PlayerScript : NetworkBehaviour {
 				rightWallCheck = false;
 			}
 		}
+	}
+
+	void JumpingAndControllingJump(){
 		if (onGround && spacePress > 0 && spacePress <= gloVar.isPressed) {
 			rBody.AddForce (new Vector3 (0, jumpForce, 0));
 			onGround = false;
@@ -190,7 +206,9 @@ public class PlayerScript : NetworkBehaviour {
 			else
 				rBody.AddForce (new Vector3 (0, Physics2D.gravity.y * 0.4f, 0));
 		}
-		//Item carrying
+	}
+
+	void ItemCarryingAndHolding(){
 		if (itemCarrying != null && (controlPress || itemCarrying.GetComponent<ItemBehavior>().notAllowedToGoHere > 0)) {
 			Vector3 newPosition = rBody.position;
 			if (upPress && !downPress) {
@@ -245,7 +263,9 @@ public class PlayerScript : NetworkBehaviour {
 				untilDequeue = -1.5f;
 			}
 		}
-		//Check to see if stats expired.
+	}
+
+	void UpdatePowerups(){
 		for (int i = 0; i < itemUsed.Count; i++) {
 			timeUntilExpired [i] -= Time.deltaTime;
 			if (timeUntilExpired [i] <= 0) {
@@ -263,7 +283,6 @@ public class PlayerScript : NetworkBehaviour {
 			}
 		}
 	}
-
 
 	void OnCollisionStay(Collision collision){
 		if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > 1 / 2) {
