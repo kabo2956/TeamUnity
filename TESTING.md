@@ -4,6 +4,7 @@ Title: Space Adventures
 
 Vision:To create an online competitive multiplayer runner game that we all would enjoy to play!
 
+
 Automated Test Cases:
 
    We ended up automating testing by writing a Testing Object that's placed inside a Testing Scene. This Testing Object runs a series of tests on the MonoBehaviour objects that we would not be able to do with the Unity Editor Test Suite, since it is really difficult to actually test GameObjects using that. From there, we have different functions that are the various tests that we want to run on the objects that we choose. Right now, we can run tests based on public functions, which you can(?) do with the Editor Test Suite, collisions with other objects, which you can't do with the Test Suite. (Although some tests do require some waiting time, which can just be a single frame or so.) We cannot test anything that you would actually have the keyboard to test with this object, however, or at least you can't do it very well.
@@ -25,6 +26,7 @@ This is what a failed test case looks like. Note how the error is after the prin
 ![image](https://github.com/kabo2956/TeamUnity/blob/master/Automatic%20Testing%20Images/ExampleofAssertionFailureWhileWritingTestSuite.png)
 
 You can also easily debug inside the test cases to see what your code has been doing if a test case fails, although errors that show up here are a mix between failed test cases and stuff that may be GameObjects doing what they shouldn't be doing.
+
 
 User Acceptance Tests:
 

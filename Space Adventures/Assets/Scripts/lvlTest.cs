@@ -14,13 +14,23 @@ public class lvlTest : MonoBehaviour {
     public float[] spawnHeightRange;
 
     public GameObject[] smallDebris;
+	public GameObject[] lasers;
+	public GameObject ship;
+	public GameObject asteroid;
+	public GameObject[] items;
     private bool inTunnel = false;
     public float tunnelLength;
+	public float shipSpawnMin, shipSpawnMax;
+	private float shipSpawn;
+	public float asteroidSpawnMin, asteroidSpawnMax;
+	private float asteroidSpawn;
     public GameObject tunnel;
 
 	// Use this for initialization
 	void Start () {
         startPos = spawnTransform.position;
+		shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
+		asteroidSpawn = Random.Range (asteroidSpawnMin, asteroidSpawnMax);
 	}
 	
 	// Update is called once per frame
@@ -39,9 +49,52 @@ public class lvlTest : MonoBehaviour {
         }
         else if(spawnTransform.position.x - startPos.x > gap & chanceTunnel >= 0.9f) {
             inTunnel = true;
-            Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(180, Vector3.right));
+            GameObject g = Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
+			BoxCollider floor = g.GetComponentInChildren<BoxCollider> ();
+			Vector3 gPos = g.transform.position;
+			g.transform.position = new Vector3 (gPos.x+floor.size.y/2, gPos.y, gPos.z);
             startPos = spawnTransform.position;
+			int numberOfLasersSpawned = Random.Range (0, 5);
+			for (int i = 0; i < numberOfLasersSpawned; i++) {
+				int tSpawned = Random.Range (0, lasers.Length);
+				GameObject l = Instantiate(lasers[tSpawned]);
+				l.transform.position = new Vector3 (gPos.x+Random.Range(0.3f, floor.size.y-0.3f), gPos.y+l.transform.localScale.y, 0.125f);
+			}
         }
-        
+		destroyLaggedObjects ();
+		spawnShips ();
+		spawnAsteroid ();
+	}
+
+	void spawnShips() {
+		shipSpawn -= Time.deltaTime;
+		if (shipSpawn <= 0 && shipSpawnMin > 0) {
+			shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
+			GameObject s = Instantiate (ship);
+			Vector3 sPos = s.transform.position;
+			s.transform.position = new Vector3 (sPos.x, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), sPos.z);
+
+		}
+	}
+
+	void spawnAsteroid() {
+		asteroidSpawn -= Time.deltaTime;
+		if (asteroidSpawn <= 0 && asteroidSpawnMin > 0) {
+			asteroidSpawn = Random.Range (asteroidSpawnMin, asteroidSpawnMax);
+			GameObject a = Instantiate (asteroid);
+			//Vector3 aPos = a.transform.position;
+			a.transform.position = new Vector3(camTransform.position.x+Random.Range(0,10),Random.Range(camTransform.position.y+8,camTransform.position.y+6),0);
+		}
+	}
+
+	void destroyLaggedObjects() {
+		GameObject[] g = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+		for (int i = 0; i < g.Length; i++) {
+			if (!g [i].tag.Equals ("Untagged")) {
+				if (g [i].transform.position.x < camTransform.position.x - tunnelLength) {
+					Destroy (g [i]);
+				}
+			}
+		}
 	}
 }

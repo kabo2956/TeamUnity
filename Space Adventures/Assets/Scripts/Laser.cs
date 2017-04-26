@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour {
 	private bool activated;
-	private float timeUntilSwitch;
+	private float timeUntilSwitch, realHeight;
 	public float maxTime, minTime;
 	public Material[] mat;
 	public GameObject trap;
@@ -13,6 +13,7 @@ public class Laser : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		activated = true;
+		realHeight = gameObject.GetComponent<CapsuleCollider> ().height;
 		timeUntilSwitch = Random.Range (minTime, maxTime);
 	}
 	
@@ -23,19 +24,24 @@ public class Laser : MonoBehaviour {
 			timeUntilSwitch = Random.Range (minTime, maxTime);
 			activated = !activated;
 			if (activated) {
-				Vector3 pos = gameObject.transform.position;
-				gameObject.transform.position = new Vector3 (pos.x, pos.y, pos.z - 1);
+				gameObject.GetComponent<CapsuleCollider> ().height = realHeight;
 				gameObject.GetComponent<MeshRenderer> ().material = mat [0];
+				/*Vector3 pos = gameObject.transform.position;
+				gameObject.transform.position = new Vector3 (pos.x, pos.y, pos.z - 0.2f);
+				*/
 			} else if (!activated) {
-				Vector3 pos = gameObject.transform.position;
-				gameObject.transform.position = new Vector3 (pos.x, pos.y, pos.z + 1);
+				gameObject.GetComponent<CapsuleCollider> ().height = 0;
 				gameObject.GetComponent<MeshRenderer> ().material = mat [1];
+				/*
+				Vector3 pos = gameObject.transform.position;
+				gameObject.transform.position = new Vector3 (pos.x, pos.y, pos.z + 0.2f);
+				*/
 			}
 		}
 	}
 
 	void OnTriggerEnter(Collider coll){
-		if (coll.gameObject.name == "Player") {
+		if (coll.gameObject.tag == "Player") {
 			if (color == 0) {
 				Vector3 pos = gameObject.transform.position;
 				GameObject g = Instantiate (trap, gameObject.transform);
