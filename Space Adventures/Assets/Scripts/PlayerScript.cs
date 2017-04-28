@@ -19,6 +19,7 @@ public class PlayerScript : NetworkBehaviour {
 	private List<float> timeUntilExpired, factors;
 	private List<int> itemUsed;
 	private Animator playerAnimator;
+	public int player_color; //sets player color 1=green 2=yellow 3=pink 4=blue
 	Rigidbody rBody;
 	Vector3 vel;
 
@@ -55,7 +56,7 @@ public class PlayerScript : NetworkBehaviour {
 	/// Update is called once per frame
 	/// </summary>
 	void Update () {
-		if (!isLocalPlayer) {
+		if (!isLocalPlayer) {		
 			return;
 		}
 		//Moving left and right
