@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDummy: 0
   itemCarrying: {fileID: 0}
+  player_color: 0
 --- !u!114 &114378439879855706
 MonoBehaviour:
   m_ObjectHideFlags: 1
