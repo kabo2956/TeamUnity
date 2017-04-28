@@ -8,14 +8,20 @@ public class WarningShip : MonoBehaviour {
 	private int animationFrame;
 	public Sprite[] animationCycle;
 	public GameObject ship;
-	// Use this for initialization
+	/// <summary>
+	/// Creates a warning for the ship.
+	/// Use this for initialization
+	/// </summary>
 	void Start () {
 		warningTime = Random.Range (0.25f, 1.0f);
 		animationTime = gloVar.animationSpeed * 4.5f;
 		nextFrame = animationTime;
 	}
-	
-	// Update is called once per frame
+
+	/// <summary>
+	///  Update is called once per frame.
+	///  The logic of the warning. Controls the animation and the spawning of the ship.
+	/// </summary>
 	void Update () {
 		Camera cam = Camera.main;
 		transform.position = new Vector3 (cam.transform.position.x + 9.2f, transform.position.y, transform.position.z);

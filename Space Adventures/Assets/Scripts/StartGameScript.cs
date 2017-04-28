@@ -6,7 +6,9 @@ using UnityEngine.Networking;
 public class StartGameScript : MonoBehaviour {
 	bool isHost, foundPlayerObjects;
 	NetworkManager network;
-	// Use this for initialization
+	/// <summary>
+	/// Use this for initialization
+	/// </summary>
 	void Start () {
 		RectTransform t = gameObject.GetComponent<RectTransform> ();
 		t.position = new Vector3 (Screen.width-t.rect.width/2, Screen.height-t.rect.height/2);
@@ -14,6 +16,10 @@ public class StartGameScript : MonoBehaviour {
 		isHost = false;
 	}
 
+	/// <summary>
+	/// Finds the host of the server.
+	/// Updates once per frame.
+	/// </summary>
 	void Update () {
 		if (!foundPlayerObjects && GameObject.FindGameObjectsWithTag("Player").Length > 0) {
 			GameObject g = GameObject.FindGameObjectsWithTag ("Player") [0];
@@ -22,6 +28,9 @@ public class StartGameScript : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// If the host clicks the button, it moves all the players into the Lvl-Testing Area to begin the game.
+	/// </summary>
 	void ClickedTheButton() {
 		if (isHost) {
 			

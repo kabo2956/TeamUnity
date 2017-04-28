@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+///<summary>
+/// This class controls the Player throughout a multiplayer server.
+///</summary>
 public class PlayerScript : NetworkBehaviour {
 	//float dX, dY;
 	public bool isDummy;
@@ -18,10 +21,11 @@ public class PlayerScript : NetworkBehaviour {
 	private Animator playerAnimator;
 	Rigidbody rBody;
 	Vector3 vel;
-	// Use this for initialization
+
+	///<summary>
+	/// Use this for initialization
+	///</summary>
 	void Start () {
-		//dX = 0;
-		//dY = 0;
 		playerAnimator = GetComponent<Animator> ();
 		Physics.gravity = new Vector2 (0, -gloVar.gravity);
 		onGround = false;
@@ -47,8 +51,9 @@ public class PlayerScript : NetworkBehaviour {
 		factors = new List<float> ();
 		itemUsed = new List<int> ();
 	}
-	
-	// Update is called once per frame
+	/// <summary>
+	/// Update is called once per frame
+	/// </summary>
 	void Update () {
 		if (!isLocalPlayer) {
 			return;
@@ -89,6 +94,9 @@ public class PlayerScript : NetworkBehaviour {
 		UpdatePowerups ();
 	}
 
+	/// <summary>
+	/// Controls walking, running, and just moving horizontally altogether!
+	/// </summary>
 	void HorizontalMovement(){
 		if (isRunning) {
 			maxVelocity = runVelocity;
@@ -158,6 +166,9 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Checks collisions on the walls, and allows the player to wall slide and wall jump.
+	/// </summary>
 	void WallSlidingAndJumping(){
 		if (!onGround) {
 			if (leftWallCheck && leftPress) {
@@ -191,6 +202,9 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// The player can jump while on the ground, and can change the height of the jump.
+	/// </summary>
 	void JumpingAndControllingJump(){
 		if (onGround && spacePress > 0 && spacePress <= gloVar.isPressed) {
 			rBody.AddForce (new Vector3 (0, jumpForce, 0));
@@ -208,6 +222,9 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Allows the player to carry items, lets the items know that they're being carried, and allows them to throw the items as well.
+	/// </summary>
 	void ItemCarryingAndHolding(){
 		if (itemCarrying != null && (controlPress || itemCarrying.GetComponent<ItemBehavior>().notAllowedToGoHere > 0)) {
 			Vector3 newPosition = rBody.position;
@@ -265,6 +282,9 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Makes sure that powerups don't last forever.
+	/// </summary>
 	void UpdatePowerups(){
 		for (int i = 0; i < itemUsed.Count; i++) {
 			timeUntilExpired [i] -= Time.deltaTime;
@@ -284,6 +304,10 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// If it collides with an object, this triggers.
+	/// </summary>
+	/// <param name="collision">The collision as a whole.</param>
 	void OnCollisionStay(Collision collision){
 		if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > 1 / 2) {
 			onGround = true;
@@ -296,7 +320,10 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
-
+	/// <summary>
+	/// If it stops colliding with an object, this triggers.
+	/// </summary>
+	/// <param name="collision">The collision as a whole.</param>
 	void OnCollisionExit(Collision collision){
 		if (collision.contacts.Length > 0) {
 			if (Vector2.Dot (collision.contacts [0].normal, new Vector3 (0, 1, 0)) > 1 / 2) {
@@ -315,13 +342,22 @@ public class PlayerScript : NetworkBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Stun the player for the specified time.
+	/// </summary>
+	/// <param name="time">The time the player is stunned. (Added if the player is already stunned)</param>
 	public void stun(float time){
 		if (stunTime <= 0 && time >= 0) {
 			stunTime += time;
 		}
 	}
-
-	/**Modifies speed and acceleration of the player.*/
+		
+	/// <summary>
+	/// Modifies speed and acceleration of the player.
+	/// </summary>
+	/// <param name="factor">How much the speed and acceleration is multiplied by.</param>
+	/// <param name="minExpired">The least time the speed modification will last.</param>
+	/// <param name="maxExpired">The most time the speed modification will last.</param>
 	public void modifySpeed(float factor, float minExpired, float maxExpired){
 		if (factor > 0) {
 			float prevWalkVel = walkVelocity;
@@ -341,8 +377,13 @@ public class PlayerScript : NetworkBehaviour {
 			}
 		}
 	}
-
-	/**Modifies jump power.*/
+		
+	/// <summary>
+	/// Modifies the jump power.
+	/// </summary>
+	/// <param name="factor">How much the jump power is multiplied by.</param>
+	/// <param name="minExpired">The least time the jump modification lasts.</param>
+	/// <param name="maxExpired">The most time the jump modification lasts.</param>
 	public void modifyJump(float factor, float minExpired, float maxExpired){
 		if (factor > 0) {
 			float prevJumpForce = jumpForce;
@@ -358,8 +399,13 @@ public class PlayerScript : NetworkBehaviour {
 			}
 		}
 	}
-
-	/** Modifies personal gravity. */
+		
+	/// <summary>
+	/// Modifies the player's personal gravity.
+	/// </summary>
+	/// <param name="factor">How much the player's personal gravity is multiplied by. (Mostly. Drag kind of messes this up...)</param>
+	/// <param name="minExpired">The least time the gravity modification lasts.</param>
+	/// <param name="maxExpired">The most time the gravity modification lasts.</param>
 	public void modifyGravity(float factor, float minExpired, float maxExpired){
 		float prevPerGrav = personalGravity;
 		personalGravity *= factor;
@@ -373,13 +419,21 @@ public class PlayerScript : NetworkBehaviour {
 			timeUntilExpired.Add (Random.Range (minExpired, maxExpired));
 		}
 	}
-
-	/**Used for the item to get whether or not it is picked up.*/
+		
+	/// <summary>
+	/// Used for the item to get whether or not it is picked up.
+	/// </summary>
+	/// <returns><c>true</c>, if control press was gotten, <c>false</c> otherwise.</returns>
 	public bool getControlPress(){
 		return controlPress;
 	}
-
-	/**Use for testing purposes only. (Unit Tests)*/
+		
+	/// <summary>
+	/// USE FOR TESTING PURPOSES ONLY.
+	/// Getting values that the game wouldn't normally get for unit tests. (Floats)
+	/// </summary>
+	/// <returns>The value of the variable to check.</returns>
+	/// <param name="value">The name of the variable to check.</param>
 	public float getValue(string value){
 		//Use only for testing purposes.
 		if (value == "walkVelocity")
@@ -400,6 +454,12 @@ public class PlayerScript : NetworkBehaviour {
 	}
 
 	/**Use for testing purposes only. (Unit Tests)*/
+	/// <summary>
+	/// USE FOR TESTING PURPOSES ONLY.
+	/// Getting values that the game wouldn't normally get for unit tests. (Booleans)
+	/// </summary>
+	/// <returns>The value of the variable to check.</returns>
+	/// <param name="value">The name of the variable to check.</param>
 	public bool getValueB(string value){
 		if (value == "onGround")
 			return(onGround);

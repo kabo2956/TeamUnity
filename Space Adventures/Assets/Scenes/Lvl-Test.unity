@@ -670,6 +670,11 @@ Prefab:
       propertyPath: camTransform
       value: 
       objectReference: {fileID: 75530375}
+    - target: {fileID: 114909703399111648, guid: 5b1d80c1fc8b74741aeafef5b449c4df,
+        type: 2}
+      propertyPath: spawnTransform
+      value: 
+      objectReference: {fileID: 1866060123}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b1d80c1fc8b74741aeafef5b449c4df, type: 2}
   m_IsPrefabParent: 0
@@ -1053,6 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3762fdd34176bde4d8c9dcca6fed64e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!4 &1543974107
 Transform:
   m_ObjectHideFlags: 0

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This is the logic for the main game.
+/// </summary>
 public class lvlTest : MonoBehaviour {
 
     public Transform camTransform;
@@ -26,14 +29,20 @@ public class lvlTest : MonoBehaviour {
 	private float asteroidSpawn;
     public GameObject tunnel;
 
-	// Use this for initialization
+	/// <summary>
+	/// Use this for initialization
+	/// </summary>
 	void Start () {
         startPos = spawnTransform.position;
 		shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
 		asteroidSpawn = Random.Range (asteroidSpawnMin, asteroidSpawnMax);
 	}
-	
-	// Update is called once per frame
+
+	/// <summary>
+	/// The main logic of the game is located here.
+	/// Controls what spawns when, and moves the screen and the wall.
+	/// Update is called once per frame
+	/// </summary>
 	void Update () {
         camTransform.position += speed * Vector3.right;
         float chanceTunnel = Random.Range(0f, 1f);
@@ -66,6 +75,9 @@ public class lvlTest : MonoBehaviour {
 		spawnAsteroid ();
 	}
 
+	/// <summary>
+	/// Spawns the Ships. (Or at least the warnings for them...)
+	/// </summary>
 	void spawnShips() {
 		shipSpawn -= Time.deltaTime;
 		if (shipSpawn <= 0 && shipSpawnMin > 0) {
@@ -77,6 +89,9 @@ public class lvlTest : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Spawns an Asteroid.
+	/// </summary>
 	void spawnAsteroid() {
 		asteroidSpawn -= Time.deltaTime;
 		if (asteroidSpawn <= 0 && asteroidSpawnMin > 0) {
@@ -87,6 +102,9 @@ public class lvlTest : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Destroys the objects that are lagging behind the wall to prevent memory leaks.
+	/// </summary>
 	void destroyLaggedObjects() {
 		GameObject[] g = FindObjectsOfType(typeof(GameObject)) as GameObject[];
 		for (int i = 0; i < g.Length; i++) {
