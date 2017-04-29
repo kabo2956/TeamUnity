@@ -206,12 +206,12 @@ public class lvlTest : MonoBehaviour {
 		shipSpawn -= Time.deltaTime;
 		if (shipSpawn <= 0 && shipSpawnMin > 0) {
 			shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
+			int prevSPI = shipPoolIndex;
             shipPoolIndex = RepositionObject(shipPool, shipPoolIndex, shipPoolSize,
-                new Vector3(0, 0, 0),
+				new Vector3(camTransform.position.x+10, spawnTransform.position.y + Random.Range(spawnHeightRange[0] - 1.5f, spawnHeightRange[1] + 1.5f), -1),
                 new Quaternion());
-            //shipPoolIndex = RepositionObject(shipPool, shipPoolIndex, shipPoolSize,
-            //    new Vector3(0, spawnTransform.position.y + Random.Range(spawnHeightRange[0] - 1.5f, spawnHeightRange[1] + 1.5f), 0),
-            //    new Quaternion());
+			//shipPool[shipPoolIndex].transform.position = new Vector3 (0, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), -1);
+			shipPool [prevSPI].GetComponent<WarningShip> ().Spawn ();
 			//GameObject s = Instantiate (ship);
 			//Vector3 sPos = s.transform.position;
 			//s.transform.position = new Vector3 (sPos.x, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), sPos.z);
