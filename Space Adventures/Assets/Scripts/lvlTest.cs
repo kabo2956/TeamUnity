@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 /// <summary>
 /// This is the logic for the main game.
 /// </summary>
-public class lvlTest : MonoBehaviour {
-
+public class lvlTest : NetworkBehaviour {
     public Transform camTransform;
     public float speed;
 
@@ -22,7 +22,7 @@ public class lvlTest : MonoBehaviour {
     public int smallDebrisPoolSize = 10;
     private int[] smallDebrisIndex;
 
-	public GameObject[] lasers;
+    public GameObject[] lasers;
     private GameObject[,] lasersPool;
     public int laserPoolSize = 10;
     private int[] lasersPoolIndex;
@@ -44,8 +44,10 @@ public class lvlTest : MonoBehaviour {
 
     private bool inTunnel = false;
     public float tunnelLength;
-	public float shipSpawnMin, shipSpawnMax;
+
+    public float shipSpawnMin, shipSpawnMax;
 	private float shipSpawn;
+
 	public float asteroidSpawnMin, asteroidSpawnMax;
 	private float asteroidSpawn;
 
@@ -54,10 +56,22 @@ public class lvlTest : MonoBehaviour {
     public int tunnelPoolSize = 3;
     private int tunnelPoolIndex = 0;
 
-	/// <summary>
-	/// Use this for initialization
-	/// </summary>
-	void Start () {
+    [SyncVar]
+    float chanceTunnel;
+    [SyncVar]
+    float gap;
+    [SyncVar]
+    float chance;
+    [SyncVar]
+    float height;
+    [SyncVar]
+    float gapDelta;
+    [SyncVar]
+    int rand;
+    /// <summary>
+    /// Use this for initialization
+    /// </summary>
+    void Start () {
         startPos = spawnTransform.position;
 		shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
 		asteroidSpawn = Random.Range (asteroidSpawnMin, asteroidSpawnMax);
@@ -137,58 +151,79 @@ public class lvlTest : MonoBehaviour {
     /// </summary>
     /// 
     
-	void Update () {
+    void Update()
+    {
         camTransform.position += speed * Vector3.right;
-        float chanceTunnel = Random.Range(0f, 1f);
+        if (isServer)
+        {
+            chanceTunnel = Random.Range(0f, 1f);
+            gap = (inTunnel) ? platformGap + tunnelLength : platformGap;
+            chance = (inTunnel) ? 1f : 0.9f;
+            height = Random.Range(spawnHeightRange[0], spawnHeightRange[1]);
+            gapDelta = Random.Range(platformGapRange[0], platformGapRange[1]);
+            rand = Random.Range(0, smallDebris.Length);
+            RpcUpdateLevel(chanceTunnel, chance, height, gapDelta, rand);
+        }else
+        {
+            Debug.Log("I'm a client");
+        }
+    }
+    [ClientRpc]
+    void RpcUpdateLevel(float ct, float c, float h, float gapD, int rIndex)
+    {
         float gap = (inTunnel) ? platformGap + tunnelLength : platformGap;
-        float chance = (inTunnel) ? 1f : 0.9f;
-        if (spawnTransform.position.x - startPos.x > gap & chanceTunnel < chance) {
-            float height = Random.Range(spawnHeightRange[0], spawnHeightRange[1]);
-            float gapDelta = Random.Range(platformGapRange[0], platformGapRange[1]);
-            //Instantiate(smallDebris[Random.Range(0, 3)], spawnTransform.position + height * Vector3.up
-            //+ gapDelta * Vector3.right, spawnTransform.rotation * Quaternion.AngleAxis(180, Vector3.right));
-            int rand = Random.Range(0, smallDebris.Length);
-            smallDebrisIndex[rand] = RepositionObject(GetGameObjectSlice(smallDebrisPool, smallDebrisSlice, rand, smallDebrisPoolSize), smallDebrisIndex[rand], smallDebrisPoolSize,
-                spawnTransform.position + height * Vector3.up + gapDelta * Vector3.right,
+        if (spawnTransform.position.x - startPos.x > gap & ct < c)
+        {
+            RepositionObject(GetGameObjectSlice(smallDebrisPool, smallDebrisSlice, rIndex, smallDebrisPoolSize), ref smallDebrisIndex[rIndex], smallDebrisPoolSize,
+                spawnTransform.position + h * Vector3.up + gapD * Vector3.right,
                 spawnTransform.rotation * (Quaternion.AngleAxis(180, Vector3.right)));
+            if (smallDebrisIndex[rIndex] >= smallDebrisPoolSize - 1)
+            {
+                smallDebrisIndex[rIndex] = 0;
+            }
+            else
+            {
+                smallDebrisIndex[rIndex] += 1;
+            }
             inTunnel = false;
             startPos = spawnTransform.position;
         }
-        else if(spawnTransform.position.x - startPos.x > gap & chanceTunnel >= 0.9f) {
+        else if (spawnTransform.position.x - startPos.x > gap & ct >= 0.9f)
+        {
             inTunnel = true;
             //GameObject g = Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
-            tunnelPoolIndex = RepositionObject(tunnelPool, tunnelPoolIndex, tunnelPoolSize, spawnTransform.position,
+            RepositionObject(tunnelPool, ref tunnelPoolIndex, tunnelPoolSize, spawnTransform.position,
                 spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
-			BoxCollider floor = tunnelPool[tunnelPoolIndex - 1].GetComponentInChildren<BoxCollider> ();
-			Vector3 gPos = tunnelPool[tunnelPoolIndex - 1].transform.position;
-            tunnelPool[tunnelPoolIndex - 1].transform.position = new Vector3 (gPos.x+floor.size.y/2, gPos.y, gPos.z);
+            if (tunnelPoolIndex >= tunnelPoolSize - 1)
+            {
+                tunnelPoolIndex = 0;
+            }
+            else
+            {
+                tunnelPoolIndex += 1;
+            }
+            BoxCollider floor = tunnelPool[tunnelPoolIndex - 1].GetComponentInChildren<BoxCollider>();
+            Vector3 gPos = tunnelPool[tunnelPoolIndex - 1].transform.position;
+            tunnelPool[tunnelPoolIndex - 1].transform.position = new Vector3(gPos.x + floor.size.y / 2, gPos.y, gPos.z);
             startPos = spawnTransform.position;
-			int numberOfLasersSpawned = Random.Range (0, 5);
-			for (int i = 0; i < numberOfLasersSpawned; i++) {
-				int tSpawned = Random.Range (0, lasers.Length);
-				GameObject l = Instantiate(lasers[tSpawned]);
-				l.transform.position = new Vector3 (gPos.x+Random.Range(0.3f, floor.size.y-0.3f), gPos.y+l.transform.localScale.y, 0.125f);
-			}
+            int numberOfLasersSpawned = Random.Range(0, 5);
+            for (int i = 0; i < numberOfLasersSpawned; i++)
+            {
+                int tSpawned = Random.Range(0, lasers.Length);
+                GameObject l = Instantiate(lasers[tSpawned]);
+                l.transform.position = new Vector3(gPos.x + Random.Range(0.3f, floor.size.y - 0.3f), gPos.y + l.transform.localScale.y, 0.125f);
+            }
         }
-		//destroyLaggedObjects ();
-		spawnShips ();
-		//spawnAsteroid ();
-	}
-    
-    int RepositionObject(GameObject[] obPool, int obIndex, int obPoolSize, Vector3 pos, Quaternion rot)
+        //destroyLaggedObjects ();
+        spawnShips();
+        //spawnAsteroid ();}
+    }
+    void RepositionObject(GameObject[] obPool, ref int obIndex, int obPoolSize, Vector3 pos, Quaternion rot)
     {
         obPool[obIndex].transform.position = pos;
         obPool[obIndex].transform.rotation = rot;
-        if(obIndex >= obPoolSize - 1)
-        {
-            obIndex = 0;
-        }
-        else
-        {
-            obIndex += 1;
-        }
         Debug.Log(obPool[obIndex].name + ": " + obIndex.ToString());
-        return obIndex;
+        //return obIndex;
     }
 
     GameObject[] GetGameObjectSlice(GameObject[,] ob2D, GameObject[] ob1D, int index, int poolSize)
@@ -207,11 +242,19 @@ public class lvlTest : MonoBehaviour {
 		if (shipSpawn <= 0 && shipSpawnMin > 0) {
 			shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
 			int prevSPI = shipPoolIndex;
-            shipPoolIndex = RepositionObject(shipPool, shipPoolIndex, shipPoolSize,
+            RepositionObject(shipPool, ref shipPoolIndex, shipPoolSize,
 				new Vector3(camTransform.position.x+10, spawnTransform.position.y + Random.Range(spawnHeightRange[0] - 1.5f, spawnHeightRange[1] + 1.5f), -1),
                 new Quaternion());
-			//shipPool[shipPoolIndex].transform.position = new Vector3 (0, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), -1);
-			shipPool [prevSPI].GetComponent<WarningShip> ().Spawn ();
+            if (shipPoolIndex >= shipPoolSize - 1)
+            {
+                shipPoolIndex = 0;
+            }
+            else
+            {
+                shipPoolIndex += 1;
+            }
+            //shipPool[shipPoolIndex].transform.position = new Vector3 (0, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), -1);
+            shipPool [prevSPI].GetComponent<WarningShip> ().Spawn ();
 			//GameObject s = Instantiate (ship);
 			//Vector3 sPos = s.transform.position;
 			//s.transform.position = new Vector3 (sPos.x, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), sPos.z);
