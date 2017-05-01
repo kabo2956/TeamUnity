@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextScript : MonoBehaviour {
 	public GameObject following;
-	public string followName;
 	public int index;
 	public Color color;
 	/// <summary>
@@ -12,7 +12,18 @@ public class TextScript : MonoBehaviour {
 	/// Blank :|
 	/// </summary>
 	void Start () {
-		
+		int playerIndex = -1;
+		GameObject[] g = FindObjectsOfType (typeof(GameObject)) as GameObject[];
+		for (int i = 0; i < g.Length; i++) {
+			if (g [i].tag == "Player") {
+				playerIndex++;
+				if (playerIndex == index) {
+					following = g [i];
+					gameObject.GetComponent<Text>().text = g [i].GetComponent<PlayerScript> ().playerName;
+				}
+			} 
+		}
+		//Prototype.NetworkLobby.LobbyPlayer
 	}
 
 	/// <summary>
@@ -22,7 +33,7 @@ public class TextScript : MonoBehaviour {
 	void Update () {
 		if (following != null) {
 			Vector3 foPos = following.transform.position;
-			Vector3 worldPos = new Vector3 ((foPos.x - Camera.main.transform.position.x), foPos.y - Camera.main.transform.position.y + 1);
+			Vector3 worldPos = new Vector3 (foPos.x+1.25f, foPos.y + 0.125f);
 			transform.position = Camera.main.WorldToScreenPoint (worldPos);
 		} 
 	}

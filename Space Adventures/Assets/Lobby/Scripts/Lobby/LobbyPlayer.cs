@@ -289,6 +289,8 @@ namespace Prototype.NetworkLobby
         public void CmdNameChanged(string name)
         {
             playerName = name;
+			GameObject lMan = GameObject.FindGameObjectWithTag ("LobbyManager");
+			lMan.GetComponent<LobbyManager> ().gamePlayerPrefab.GetComponent<PlayerScript> ().playerName = name;
         }
 
         //Cleanup thing when get destroy (which happen when client kick or disconnect)

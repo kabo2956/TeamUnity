@@ -10,6 +10,7 @@ public class PlayerScript : NetworkBehaviour {
 	//float dX, dY;
 	public bool hasBeenNamed;
 	public bool isDummy;
+	public string playerName;
 	bool onGround,leftWallCheck,rightWallCheck, controlPress, leftPress, rightPress, upPress, downPress, isRight, isRunning;
 	int spacePress;
 	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump, accelFactor, personalGravity;
