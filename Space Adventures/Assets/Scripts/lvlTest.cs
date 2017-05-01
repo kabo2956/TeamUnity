@@ -33,9 +33,6 @@ public class lvlTest : NetworkBehaviour {
     public int shipPoolSize = 5;
 
     public GameObject asteroid;
-    private GameObject[] asteroidPool;
-    public int asteroidPoolSize = 5;
-    private int asteroidPoolIndex = 0;
 
     public GameObject[] items;
     private GameObject[,] itemsPool;

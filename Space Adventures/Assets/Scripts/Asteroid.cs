@@ -6,14 +6,15 @@ public class Asteroid : MonoBehaviour {
 	public GameObject[] items;
 	public float minSpeedX, maxSpeedX;
 	public float momentsUntilDestruction;
-	public GameObject particleEmitt;
+	private bool impact;
 	/// <summary>
 	/// Use this for initialization
 	/// </summary>
 	void Start () {
-		gameObject.GetComponent<Rigidbody>().velocity = new Vector3 (Random.Range (minSpeedX, maxSpeedX), Random.Range (-5, 0), 0);
+		gameObject.GetComponent<Rigidbody> ().velocity = new Vector3 (Random.Range (minSpeedX, maxSpeedX), Random.Range (-5, 0), 0);
 		gameObject.GetComponent<Rigidbody> ().drag = Random.Range (0, 1);
 		momentsUntilDestruction = -1;
+		impact = false;
 	}
 	
 	// Update is called once per frame
@@ -22,16 +23,16 @@ public class Asteroid : MonoBehaviour {
 	/// If it has been "destroyed", it counts down a few seconds before actually destroying itself to keep particles going.
 	/// </summary>
 	void Update () {
-		particleEmitt.transform.position = gameObject.transform.position;
 		if (momentsUntilDestruction > 0) {
 			momentsUntilDestruction -= Time.deltaTime;
 			if (momentsUntilDestruction <= 0) {
 				Destroy (gameObject);
 			}
 		}
-		if (transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * Screen.width / Screen.height - 3 ||
-		    transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize - 3) {
+		if ((transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * Screen.width / Screen.height - 3 ||
+			transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize - 3) && !impact) {
 			momentsUntilDestruction = 3;
+			impact = true;
 		}
 	}
 
@@ -53,7 +54,8 @@ public class Asteroid : MonoBehaviour {
 				g.GetComponent<Rigidbody> ().velocity = new Vector3 (Random.Range(-1,-5), Random.Range (1, 5), 0);
 			}
 		}
-		gameObject.transform.position = new Vector3 (0, 100, 0);
+		gameObject.transform.position = new Vector3 (0, -999, 0);
 		momentsUntilDestruction = 3;
+		impact = true;
 	}
 }

@@ -34,6 +34,7 @@ public class ItemBehavior : MonoBehaviour {
 			gameObject.transform.position = g.GetComponent<Rigidbody> ().transform.position;
 			if (transform.position.x < Camera.main.transform.position.x - Camera.main.orthographicSize * Screen.width / Screen.height - 1 ||
 			    transform.position.y < Camera.main.transform.position.y - Camera.main.orthographicSize - 1) {
+				Destroy (g);
 				Destroy (gameObject);
 			}
 		} else {
