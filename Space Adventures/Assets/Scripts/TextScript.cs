@@ -33,7 +33,7 @@ public class TextScript : MonoBehaviour {
 	void Update () {
 		if (following != null) {
 			Vector3 foPos = following.transform.position;
-			Vector3 worldPos = new Vector3 (foPos.x+1.25f, foPos.y + 0.125f);
+			Vector3 worldPos = new Vector3 (foPos.x, foPos.y + 0.125f);
 			transform.position = Camera.main.WorldToScreenPoint (worldPos);
 		} 
 	}

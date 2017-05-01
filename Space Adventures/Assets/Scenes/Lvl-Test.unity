@@ -375,7 +375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   following: {fileID: 0}
-  followName: 
   index: 1
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &198890472
@@ -651,7 +650,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   following: {fileID: 0}
-  followName: 
   index: 0
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &317208762
@@ -680,7 +678,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1002,7 +1000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   following: {fileID: 0}
-  followName: 
   index: 2
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &866041567
@@ -1537,7 +1534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   following: {fileID: 0}
-  followName: 
   index: 3
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1375036530

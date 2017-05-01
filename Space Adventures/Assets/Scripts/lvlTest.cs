@@ -213,7 +213,7 @@ public class lvlTest : NetworkBehaviour {
         }
         //destroyLaggedObjects ();
         spawnShips();
-		//spawnAsteroid ();
+		spawnAsteroid ();
         //spawnAsteroid ();}
     }
     void RepositionObject(GameObject[] obPool, ref int obIndex, int obPoolSize, Vector3 pos, Quaternion rot)
