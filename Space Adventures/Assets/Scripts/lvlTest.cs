@@ -149,7 +149,7 @@ public class lvlTest : NetworkBehaviour {
     /// Controls what spawns when, and moves the screen and the wall.
     /// Update is called once per frame
     /// </summary>
-    /// 
+    /// this is summary
     
     void Update()
     {
