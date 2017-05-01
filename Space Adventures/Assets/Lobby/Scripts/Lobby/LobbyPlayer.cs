@@ -192,16 +192,18 @@ namespace Prototype.NetworkLobby
 
         public void OnMyColor(Color newColor)
         {
-			GameObject lMan = GameObject.FindGameObjectWithTag ("LobbyManager");
-			PlayerScript p = lMan.GetComponent<LobbyManager> ().gamePlayerPrefab.GetComponent<PlayerScript> ();
-			if (newColor == Color.green)
-				p.player_color = 4;
-			else if (newColor == Color.yellow)
-				p.player_color = 2;
-			else if (newColor == Color.red)
-				p.player_color = 3;
-			else if (newColor == Color.blue)
-				p.player_color = 1;
+			if (isLocalPlayer) {
+				GameObject lMan = GameObject.FindGameObjectWithTag ("LobbyManager");
+				PlayerScript p = lMan.GetComponent<LobbyManager> ().gamePlayerPrefab.GetComponent<PlayerScript> ();
+				if (newColor == Color.green)
+					p.player_color = 4;
+				else if (newColor == Color.yellow)
+					p.player_color = 2;
+				else if (newColor == Color.red)
+					p.player_color = 3;
+				else if (newColor == Color.blue)
+					p.player_color = 1;
+			}
             playerColor = newColor;
             colorButton.GetComponent<Image>().color = newColor;
         }
@@ -301,7 +303,9 @@ namespace Prototype.NetworkLobby
         {
             playerName = name;
 			GameObject lMan = GameObject.FindGameObjectWithTag ("LobbyManager");
-			lMan.GetComponent<LobbyManager> ().gamePlayerPrefab.GetComponent<PlayerScript> ().playerName = name;
+			if (isLocalPlayer) {
+				lMan.GetComponent<LobbyManager> ().gamePlayerPrefab.GetComponent<PlayerScript> ().playerName = name;
+			}
         }
 
         //Cleanup thing when get destroy (which happen when client kick or disconnect)
