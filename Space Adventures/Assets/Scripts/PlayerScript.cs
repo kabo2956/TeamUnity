@@ -75,6 +75,9 @@ public class PlayerScript : NetworkBehaviour {
 				return;
 			}
 		}
+
+		//playerAnimator.SetInt ("Color",player_color);
+
 		leftPress = Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A);
 		rightPress = Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D);
 		upPress = Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.W);
