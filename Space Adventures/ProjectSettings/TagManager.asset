@@ -7,6 +7,8 @@ TagManager:
   - Solid
   - Pickup-Item
   - Misc
+  - Name
+  - LobbyManager
   layers:
   - Default
   - TransparentFX

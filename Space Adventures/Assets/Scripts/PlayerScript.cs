@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 ///</summary>
 public class PlayerScript : NetworkBehaviour {
 	//float dX, dY;
+	public bool hasBeenNamed;
 	public bool isDummy;
 	bool onGround,leftWallCheck,rightWallCheck, controlPress, leftPress, rightPress, upPress, downPress, isRight, isRunning;
 	int spacePress;
