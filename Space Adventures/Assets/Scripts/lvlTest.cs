@@ -53,18 +53,21 @@ public class lvlTest : NetworkBehaviour {
     public int tunnelPoolSize = 3;
     private int tunnelPoolIndex = 0;
 
-    [SyncVar]
     float chanceTunnel;
-    [SyncVar]
     float gap;
-    [SyncVar]
     float chance;
-    [SyncVar]
     float height;
-    [SyncVar]
     float gapDelta;
-    [SyncVar]
     int rand;
+
+    [SyncVar]
+    Vector3 sPos;
+    [SyncVar]
+    Quaternion sRot;
+    [SyncVar]
+    int obType;
+    [SyncVar]
+    int index;
     /// <summary>
     /// Use this for initialization
     /// </summary>
@@ -150,55 +153,73 @@ public class lvlTest : NetworkBehaviour {
     
     void Update()
     {
-        camTransform.position += speed * Vector3.right;
+        camTransform.position += speed * Vector3.right * Time.deltaTime * 60;
         if (isServer)
         {
+            //RpcUpdateLevel(camTransform.position, new Quaternion(), 3, 0);
             chanceTunnel = Random.Range(0f, 1f);
             gap = (inTunnel) ? platformGap + tunnelLength : platformGap;
             chance = (inTunnel) ? 1f : 0.9f;
             height = Random.Range(spawnHeightRange[0], spawnHeightRange[1]);
             gapDelta = Random.Range(platformGapRange[0], platformGapRange[1]);
             rand = Random.Range(0, smallDebris.Length);
-            RpcUpdateLevel(chanceTunnel, chance, height, gapDelta, rand);
-        }else
+            if (spawnTransform.position.x - startPos.x > gap & chanceTunnel < chance)
+            {
+                sPos = spawnTransform.position + height * Vector3.up + gap * Vector3.right;
+                sRot = spawnTransform.rotation * (Quaternion.AngleAxis(180, Vector3.right));
+
+                RepositionObject(GetGameObjectSlice(smallDebrisPool, smallDebrisSlice, rand, smallDebrisPoolSize),
+                    ref smallDebrisIndex[rand], smallDebrisPoolSize, sPos, sRot);
+                RpcUpdateLevel(sPos, sRot, 1, rand);
+                inTunnel = false;
+                startPos = spawnTransform.position;
+            }
+            else if (spawnTransform.position.x - startPos.x > gap & chanceTunnel >= 0.9f)
+            {
+                inTunnel = true;
+                //GameObject g = Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
+                sPos = spawnTransform.position;
+                sRot = spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right);
+                RepositionObject(tunnelPool, ref tunnelPoolIndex, tunnelPoolSize, sPos, sRot);
+                RpcUpdateLevel(sPos, sRot, 2, 1);
+
+                BoxCollider floor = tunnelPool[tunnelPoolIndex - 1].GetComponentInChildren<BoxCollider>();
+                Vector3 gPos = tunnelPool[tunnelPoolIndex - 1].transform.position;
+                tunnelPool[tunnelPoolIndex - 1].transform.position = new Vector3(gPos.x + floor.size.y / 2, gPos.y, gPos.z);
+                startPos = spawnTransform.position;
+                int numberOfLasersSpawned = Random.Range(0, 5);
+                for (int i = 0; i < numberOfLasersSpawned; i++)
+                {
+                    int tSpawned = Random.Range(0, lasers.Length);
+                    GameObject l = Instantiate(lasers[tSpawned]);
+                    l.transform.position = new Vector3(gPos.x + Random.Range(0.3f, floor.size.y - 0.3f), gPos.y + l.transform.localScale.y, 0.125f);
+                }
+            }
+            //destroyLaggedObjects ();
+            spawnShips();
+            //spawnAsteroid ();
+            //spawnAsteroid ();}
+        }
+        else
         {
             Debug.Log("I'm a client");
         }
     }
     [ClientRpc]
-    void RpcUpdateLevel(float ct, float c, float h, float gapD, int rIndex)
+    void RpcUpdateLevel(Vector3 pos, Quaternion rot, int type, int index)
     {
-        float gap = (inTunnel) ? platformGap + tunnelLength : platformGap;
-        if (spawnTransform.position.x - startPos.x > gap & ct < c)
+        if (isServer)
         {
-            RepositionObject(GetGameObjectSlice(smallDebrisPool, smallDebrisSlice, rIndex, smallDebrisPoolSize), ref smallDebrisIndex[rIndex], smallDebrisPoolSize,
-                spawnTransform.position + h * Vector3.up + gapD * Vector3.right,
-                spawnTransform.rotation * (Quaternion.AngleAxis(180, Vector3.right)));
-            if (smallDebrisIndex[rIndex] >= smallDebrisPoolSize - 1)
-            {
-                smallDebrisIndex[rIndex] = 0;
-            }
-            else
-            {
-                smallDebrisIndex[rIndex] += 1;
-            }
-            inTunnel = false;
-            startPos = spawnTransform.position;
+            return;
         }
-        else if (spawnTransform.position.x - startPos.x > gap & ct >= 0.9f)
+        if (type == 1)
         {
-            inTunnel = true;
-            //GameObject g = Instantiate(tunnel, spawnTransform.position, spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
-            RepositionObject(tunnelPool, ref tunnelPoolIndex, tunnelPoolSize, spawnTransform.position,
-                spawnTransform.rotation * Quaternion.AngleAxis(-90, Vector3.right));
-            if (tunnelPoolIndex >= tunnelPoolSize - 1)
-            {
-                tunnelPoolIndex = 0;
-            }
-            else
-            {
-                tunnelPoolIndex += 1;
-            }
+            RepositionObject(GetGameObjectSlice(smallDebrisPool, smallDebrisSlice, index, smallDebrisPoolSize),
+                    ref smallDebrisIndex[index], smallDebrisPoolSize, pos, rot);
+        }
+        else if(type == 2)
+        {
+            RepositionObject(tunnelPool, ref tunnelPoolIndex, tunnelPoolSize, pos, rot);
             BoxCollider floor = tunnelPool[tunnelPoolIndex - 1].GetComponentInChildren<BoxCollider>();
             Vector3 gPos = tunnelPool[tunnelPoolIndex - 1].transform.position;
             tunnelPool[tunnelPoolIndex - 1].transform.position = new Vector3(gPos.x + floor.size.y / 2, gPos.y, gPos.z);
@@ -211,7 +232,18 @@ public class lvlTest : NetworkBehaviour {
                 l.transform.position = new Vector3(gPos.x + Random.Range(0.3f, floor.size.y - 0.3f), gPos.y + l.transform.localScale.y, 0.125f);
             }
         }
-        //destroyLaggedObjects ();
+        else if(type == 3)
+        {
+            pos = Vector3.Lerp(pos, camTransform.position, 0.5f);
+            camTransform.position = pos;
+            return;
+        }
+        else if(type == 4)
+        {
+            int prevSPI = shipPoolIndex;
+            RepositionObject(shipPool, ref shipPoolIndex, shipPoolSize, pos, new Quaternion());
+            shipPool[prevSPI].GetComponent<WarningShip>().Spawn();
+        }
         spawnShips();
 		spawnAsteroid ();
         //spawnAsteroid ();}
@@ -220,6 +252,14 @@ public class lvlTest : NetworkBehaviour {
     {
         obPool[obIndex].transform.position = pos;
         obPool[obIndex].transform.rotation = rot;
+        if (obIndex >= obPoolSize - 1)
+        {
+            obIndex = 0;
+        }
+        else
+        {
+            obIndex += 1;
+        }
         Debug.Log(obPool[obIndex].name + ": " + obIndex.ToString());
         //return obIndex;
     }
@@ -240,23 +280,15 @@ public class lvlTest : NetworkBehaviour {
 		if (shipSpawn <= 0 && shipSpawnMin > 0) {
 			shipSpawn = Random.Range (shipSpawnMin, shipSpawnMax);
 			int prevSPI = shipPoolIndex;
-            RepositionObject(shipPool, ref shipPoolIndex, shipPoolSize,
-				new Vector3(camTransform.position.x+10, spawnTransform.position.y + Random.Range(spawnHeightRange[0] - 1.5f, spawnHeightRange[1] + 1.5f), -1),
-                new Quaternion());
-            if (shipPoolIndex >= shipPoolSize - 1)
-            {
-                shipPoolIndex = 0;
-            }
-            else
-            {
-                shipPoolIndex += 1;
-            }
+            sPos = new Vector3(camTransform.position.x + 10,
+                spawnTransform.position.y + Random.Range(spawnHeightRange[0] - 1.5f, spawnHeightRange[1] + 1.5f), -1);
+            RepositionObject(shipPool, ref shipPoolIndex, shipPoolSize, sPos, new Quaternion());
+            RpcUpdateLevel(sPos, sRot, 4, 0);
             //shipPool[shipPoolIndex].transform.position = new Vector3 (0, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), -1);
-            shipPool [prevSPI].GetComponent<WarningShip> ().Spawn ();
+            shipPool[prevSPI].GetComponent<WarningShip> ().Spawn ();
 			//GameObject s = Instantiate (ship);
 			//Vector3 sPos = s.transform.position;
 			//s.transform.position = new Vector3 (sPos.x, spawnTransform.position.y+Random.Range(spawnHeightRange[0]-1.5f,spawnHeightRange[1]+1.5f), sPos.z);
-
 		}
 	}
 
