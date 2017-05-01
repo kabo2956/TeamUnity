@@ -30,6 +30,7 @@ public class PlayerScript : NetworkBehaviour {
 	///</summary>
 	void Start () {
 		playerAnimator = GetComponent<Animator> ();
+		playerAnimator.SetInteger ("Color", player_color);
 		Physics.gravity = new Vector2 (0, -gloVar.gravity);
 		onGround = false;
 		spacePress = 0;
@@ -62,6 +63,7 @@ public class PlayerScript : NetworkBehaviour {
 			return;
 		}
 		//Moving left and right
+		playerAnimator.SetInteger ("Color", player_color);
 		if (stunTime > 0) {
 			stunTime -= Time.deltaTime;
 			if (stunTime <= 0) {
