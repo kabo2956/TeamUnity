@@ -10,6 +10,7 @@ public class PlayerScript : NetworkBehaviour {
 	//float dX, dY;
 	public bool hasBeenNamed;
 	public bool isDummy;
+	[SyncVar]
 	public string playerName;
 	bool onGround,leftWallCheck,rightWallCheck, controlPress, leftPress, rightPress, upPress, downPress, isRight, isRunning;
 	int spacePress;
@@ -21,6 +22,7 @@ public class PlayerScript : NetworkBehaviour {
 	private List<float> timeUntilExpired, factors;
 	private List<int> itemUsed;
 	private Animator playerAnimator;
+	[SyncVar]
 	public int player_color; //sets player color 1=green 2=yellow 3=pink 4=blue
 	Rigidbody rBody;
 	Vector3 vel;
