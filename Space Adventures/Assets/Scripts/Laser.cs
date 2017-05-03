@@ -8,11 +8,39 @@ using UnityEngine;
 public class Laser : MonoBehaviour {
 	private bool activated;
 	private float timeUntilSwitch, realHeight;
-	public float maxTime, minTime;
+	/// <summary>
+	/// The maximum time (seconds) it takes for the laser to toggle on and off.
+	/// </summary>
+	public float maxTime;
+	/// <summary>
+	/// The minimum time (seconds) it takes for the laser to toggle on and off.
+	/// </summary>
+	public float minTime;
+	/// <summary>
+	/// The materials of the lasers. (GREEN MATERIAL, RED MATERIAL, BLUE MATERIAL)
+	/// </summary>
 	public Material[] mat;
+	/// <summary>
+	/// The trap spawned by the green laser. (A solid object)
+	/// </summary>
 	public GameObject trap;
+	/// <summary>
+	/// The color of the laser.
+	/// Green = 0
+	/// Red = 1
+	/// Blue = 2
+	/// </summary>
 	public int color; //Green: 0, Red: 1, Blue: 2
-	public float maxPower, minPower;
+	/// <summary>
+	/// If the laser is red, the max power the laser pushes you back by.
+	/// If the laser is blue, the maximum amount of time the laser stuns the player.
+	/// </summary>
+	public float maxPower;
+	/// <summary>
+	/// If the laser is red, the min power the laser pushes you back by.
+	/// If the laser is blue, the minimum amount of time the laser stuns the player.
+	/// </summary>
+	public float minPower;
 
 	/// <summary>
 	/// Use this for initialization

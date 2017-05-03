@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A warning bubble that appears on the side of the screen and spawns a ship.
+/// </summary>
 public class WarningShip : MonoBehaviour {
 	private float warningTime;
 	private float animationTime, nextFrame;
 	private int animationFrame;
 	private bool active;
+	/// <summary>
+	/// The animation cycle for the warning bubble.
+	/// </summary>
 	public Sprite[] animationCycle;
+	/// <summary>
+	/// The ship that is spawned.
+	/// </summary>
 	public GameObject ship;
 	private GameObject s;
 	/// <summary>

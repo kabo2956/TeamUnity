@@ -2,14 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The behavior of the items in the game.
+/// </summary>
 public class ItemBehavior : MonoBehaviour {
+	/// <summary>
+	/// The object that has gravity and collision.
+	/// </summary>
 	public GameObject grav;
+	/// <summary>
+	/// The instantiated grav.
+	/// </summary>
 	public GameObject g;
+	/// <summary>
+	/// How powerful the item is.
+	/// </summary>
 	public float factor;
-	public int self, notAllowedToGoHere;
+	/// <summary>
+	/// The type of object this is.
+	/// 0: Speed Modifier
+	/// 1: Jump Modifier
+	/// 2: Gravity Modifier
+	/// </summary>
+	public int self;
+	/// <summary>
+	/// How many solid objects the item is touching when it is being carried to prevent movement.
+	/// </summary>
+	public int notAllowedToGoHere;
+	/// <summary>
+	/// If the item is being carried.
+	/// </summary>
 	public bool beingCarried;
+	/// <summary>
+	/// The previous position of the item.
+	/// </summary>
 	public Vector3 prevPosition;
-	public float minExpired, maxExpired;
+	/// <summary>
+	/// How the minimum amount of time that the item affects the player.
+	/// </summary>
+	public float minExpired;
+	/// <summary>
+	/// How the maximum amount of time that the item affects the player.
+	/// </summary>
+	public float maxExpired;
 	/// <summary>
 	/// Use this for initialization
 	/// </summary>

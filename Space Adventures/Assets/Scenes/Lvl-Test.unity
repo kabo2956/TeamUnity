@@ -1118,6 +1118,11 @@ Prefab:
       propertyPath: spawnTransform
       value: 
       objectReference: {fileID: 1866060123}
+    - target: {fileID: 114909703399111648, guid: 5b1d80c1fc8b74741aeafef5b449c4df,
+        type: 2}
+      propertyPath: platformGap
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b1d80c1fc8b74741aeafef5b449c4df, type: 2}
   m_IsPrefabParent: 0

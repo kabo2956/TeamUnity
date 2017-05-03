@@ -7,49 +7,109 @@ using UnityEngine.Networking;
 /// This is the logic for the main game.
 /// </summary>
 public class lvlTest : NetworkBehaviour {
+	/// <summary>
+	/// The transformation of the camera.
+	/// </summary>
 	public Transform camTransform;
+	/// <summary>
+	/// The speed the camera is moving.
+	/// </summary>
 	public float speed;
 
 	private Vector3 startPos;
+	/// <summary>
+	/// The transformation of the object that spawns the rest of the objects.
+	/// </summary>
 	public Transform spawnTransform;
+	/// <summary>
+	/// The average gap of platforms spawned.
+	/// </summary>
 	public float platformGap;
+	/// <summary>
+	/// The minimum and maximum compared to the average gap of platforms spawned.
+	/// </summary>
 	public float[] platformGapRange;
+	/// <summary>
+	/// How far the platforms can spawn from the center. (Minimum and Maximum)
+	/// </summary>
 	public float[] spawnHeightRange;
-
+	/// <summary>
+	/// The platforms that can be spawned.
+	/// </summary>
 	public GameObject[] smallDebris;
 	private GameObject[] smallDebrisSlice;
 	private GameObject[,] smallDebrisPool;
+	/// <summary>
+	/// The size of the platform pool.
+	/// </summary>
 	public int smallDebrisPoolSize = 10;
 	private int[] smallDebrisIndex;
-
+	/// <summary>
+	/// The lasers that can be spawned.
+	/// </summary>
 	public GameObject[] lasers;
 	private GameObject[,] lasersPool;
+	/// <summary>
+	/// The size of the laser pool.
+	/// </summary>
 	public int laserPoolSize = 10;
 	private int[] lasersPoolIndex;
-
+	/// <summary>
+	/// The ship. (Or at least the warning that spawns the ship...)
+	/// </summary>
 	public GameObject ship;
 	private GameObject[] shipPool;
 	private int shipPoolIndex = 0;
+	/// <summary>
+	/// The size of the ship pool.
+	/// </summary>
 	public int shipPoolSize = 5;
-
+	/// <summary>
+	/// The asteroid that carries the items.
+	/// </summary>
 	public GameObject asteroid;
-
+	/// <summary>
+	/// The items that exist in the world.
+	/// </summary>
 	public GameObject[] items;
 	private GameObject[,] itemsPool;
+	/// <summary>
+	/// The size of the items pool.
+	/// </summary>
 	public int itemsPoolSize = 5;
 	private int[] itemPoolIndex;
 
 	private bool inTunnel = false;
+	/// <summary>
+	/// The length of the tunnel.
+	/// </summary>
 	public float tunnelLength;
-
-	public float shipSpawnMin, shipSpawnMax;
+	/// <summary>
+	/// The minimum amount of time (seconds) until a ship can spawn.
+	/// </summary>
+	public float shipSpawnMin;
+	/// <summary>
+	/// The maximum amount of time (seconds) until a ship spawns.
+	/// </summary>
+	public float shipSpawnMax;
 	private float shipSpawn;
-
-	public float asteroidSpawnMin, asteroidSpawnMax;
+	/// <summary>
+	/// The minimum amount of time (seconds) until an asteroid can spawn.
+	/// </summary>
+	public float asteroidSpawnMin;
+	/// <summary>
+	/// The maximum amount of time (seconds) until an asteroid can spawn.
+	/// </summary>
+	public float asteroidSpawnMax;
 	private float asteroidSpawn;
-
+	/// <summary>
+	/// The tunnel.
+	/// </summary>
 	public GameObject tunnel;
 	private GameObject[] tunnelPool;
+	/// <summary>
+	/// The size of the tunnel pool.
+	/// </summary>
 	public int tunnelPoolSize = 3;
 	private int tunnelPoolIndex = 0;
 
@@ -205,6 +265,14 @@ public class lvlTest : NetworkBehaviour {
 			Debug.Log("I'm a client");
 		}
 	}
+
+	/// <summary>
+	/// Spawns stuff on other the client's screens.
+	/// </summary>
+	/// <param name="pos">Position.</param>
+	/// <param name="rot">Rot.</param>
+	/// <param name="type">Type.</param>
+	/// <param name="index">Index.</param>
 	[ClientRpc]
 	void RpcUpdateLevel(Vector3 pos, Quaternion rot, int type, int index)
 	{
@@ -246,6 +314,14 @@ public class lvlTest : NetworkBehaviour {
 		}
 		spawnShips();
 	}
+	/// <summary>
+	/// Repositions the objects.
+	/// </summary>
+	/// <param name="obPool">Object pool.</param>
+	/// <param name="obIndex">Object index.</param>
+	/// <param name="obPoolSize">Object pool size.</param>
+	/// <param name="pos">Position.</param>
+	/// <param name="rot">Rotation.</param>
 	void RepositionObject(GameObject[] obPool, ref int obIndex, int obPoolSize, Vector3 pos, Quaternion rot)
 	{
 		obPool[obIndex].transform.position = pos;
@@ -261,7 +337,14 @@ public class lvlTest : NetworkBehaviour {
 		Debug.Log(obPool[obIndex].name + ": " + obIndex.ToString());
 		//return obIndex;
 	}
-
+	/// <summary>
+	/// Gets the game object slice.
+	/// </summary>
+	/// <returns>The game object slice.</returns>
+	/// <param name="ob2D">Ob2D.</param>
+	/// <param name="ob1D">Ob1D.</param>
+	/// <param name="index">Index.</param>
+	/// <param name="poolSize">Pool size.</param>
 	GameObject[] GetGameObjectSlice(GameObject[,] ob2D, GameObject[] ob1D, int index, int poolSize)
 	{
 		for(int i = 0; i < poolSize; i++)

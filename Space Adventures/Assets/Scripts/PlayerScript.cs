@@ -8,19 +8,38 @@ using UnityEngine.Networking;
 ///</summary>
 public class PlayerScript : NetworkBehaviour {
 	//float dX, dY;
+	/// <summary>
+	/// Whether or not the player has been named.
+	/// </summary>
 	public bool hasBeenNamed;
+	/// <summary>
+	/// Whether or not the player should have movement.
+	/// </summary>
 	public bool isDummy;
+	/// <summary>
+	/// The name of the player.
+	/// </summary>
 	public string playerName;
 	bool onGround,leftWallCheck,rightWallCheck, controlPress, leftPress, rightPress, upPress, downPress, isRight, isRunning;
 	int spacePress;
 	float jumpForce, walkVelocity, runVelocity, maxVelocity, refinedJump, accelFactor, personalGravity;
 	private float stunTime, itemThrowAngle, holdSpeed, untilDequeue;
+	/// <summary>
+	/// The item being carried.
+	/// </summary>
 	public GameObject itemCarrying;
 	private Queue<GameObject> itemsRemoved;
 	private Queue<float> escapeFromQueue;
 	private List<float> timeUntilExpired, factors;
 	private List<int> itemUsed;
 	private Animator playerAnimator;
+	/// <summary>
+	/// The color of the player.
+	/// 1 = Blue (Green?)
+	/// 2 = Yellow
+	/// 3 = Pink
+	/// 4 = Green (Blue?)
+	/// </summary>
 	public int player_color; //sets player color 1=green 2=yellow 3=pink 4=blue
 	Rigidbody rBody;
 	Vector3 vel;
