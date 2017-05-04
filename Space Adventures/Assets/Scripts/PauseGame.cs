@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The pause menu.
+/// </summary>
 public class PauseGame : MonoBehaviour {
 	/// <summary>
 	/// The canvas on which the pause menu resides.

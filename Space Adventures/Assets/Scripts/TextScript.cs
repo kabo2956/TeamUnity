@@ -3,9 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// The text that hovers over all of the players.
+/// </summary>
 public class TextScript : MonoBehaviour {
+	/// <summary>
+	/// The player that the Text is following.
+	/// </summary>
 	public GameObject following;
+	/// <summary>
+	/// What player it is actually following in a multiplayer match. Can go from 0-3, 0 being Player 1, and 3 being Player 4.
+	/// </summary>
 	public int index;
+	/// <summary>
+	/// The color of the text.
+	/// </summary>
 	public Color color;
 	/// <summary>
 	/// Use this for initialization.

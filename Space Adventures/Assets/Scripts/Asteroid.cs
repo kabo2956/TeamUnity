@@ -2,9 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// An asteroid that gives out items when it collides with stuff.
+/// </summary>
 public class Asteroid : MonoBehaviour {
+	/// <summary>
+	/// The items that the asteroid has inside of it.
+	/// </summary>
 	public GameObject[] items;
-	public float minSpeedX, maxSpeedX;
+	/// <summary>
+	/// The minimum speed that the asteroid can go. (Maximum to the left if negative)
+	/// </summary>
+	public float minSpeedX;
+	/// <summary>
+	/// The maximum speed to the right that the asteroid can go.
+	/// </summary>
+	public float maxSpeedX;
+	/// <summary>
+	/// When the asteroid collides with anything, this is set to 3. 
+	/// After that, it has those moments for the particles of the asteroid to fizzle out before it is actually destroyed.
+	/// </summary>
 	public float momentsUntilDestruction;
 	private bool impact;
 	/// <summary>
@@ -16,8 +33,7 @@ public class Asteroid : MonoBehaviour {
 		momentsUntilDestruction = -1;
 		impact = false;
 	}
-	
-	// Update is called once per frame
+
 	/// <summary>
 	/// Update is called once per frame. 
 	/// If it has been "destroyed", it counts down a few seconds before actually destroying itself to keep particles going.
