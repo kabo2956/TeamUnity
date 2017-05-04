@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23694768152579404}
   - component: {fileID: 95374803224020294}
   - component: {fileID: 65855700191292198}
+  - component: {fileID: 114927712753385272}
   m_Layer: 0
   m_Name: Debris_4
   m_TagString: Solid
@@ -110,3 +111,35 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114927712753385272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969461504450670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 196
+    i1: 82
+    i2: 199
+    i3: 250
+    i4: 37
+    i5: 87
+    i6: 157
+    i7: 84
+    i8: 104
+    i9: 143
+    i10: 71
+    i11: 75
+    i12: 187
+    i13: 10
+    i14: 174
+    i15: 166
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

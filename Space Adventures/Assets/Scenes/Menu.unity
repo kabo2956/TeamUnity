@@ -216,7 +216,7 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 1176594864904542, guid: ae10d6ae7e6394a458fc7fe1550ed490,
     type: 2}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: Menu
   m_OnlineScene: Lvl-Test
   m_SpawnPrefabs: []
@@ -922,7 +922,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Main Menu
+  m_Text: Network Lobby
 --- !u!222 &920587865
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1066,7 +1066,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1482416699}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 54621691}
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lobby
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1482416699

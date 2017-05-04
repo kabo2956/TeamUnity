@@ -21,7 +21,7 @@ Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\ne
 Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\new_menu_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\new_menu_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\new_menu_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.077 seconds
+- Completed reload, in  0.073 seconds
 Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\new_menu_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\new_menu_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
@@ -36,27 +36,13 @@ The referenced script on this Behaviour (Game Object 'GameObject') is missing!
  
 (Filename:  Line: 1754)
 
-UnloadTime: 3.875086 ms
+UnloadTime: 1.610705 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.752416 ms
+UnloadTime: 6.408377 ms
 
-Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 428.
-Total: 0.402868 ms (FindLiveObjects: 0.051538 ms CreateObjectMapping: 0.045160 ms MarkObjects: 0.263305 ms  DeleteObjects: 0.034699 ms)
-
-The referenced script on this Behaviour (Game Object 'Start Button') is missing!
- 
-(Filename:  Line: 1754)
-
-The referenced script on this Behaviour (Game Object 'GameObject') is missing!
- 
-(Filename:  Line: 1754)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.609022 ms
-
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 378.
-Total: 0.409757 ms (FindLiveObjects: 0.019901 ms CreateObjectMapping: 0.017859 ms MarkObjects: 0.252589 ms  DeleteObjects: 0.118895 ms)
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 728.
+Total: 0.881767 ms (FindLiveObjects: 0.127570 ms CreateObjectMapping: 0.073480 ms MarkObjects: 0.617696 ms  DeleteObjects: 0.041843 ms)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 3730 -> priority: 1 
-  Thread -> id: 3c9c -> priority: 1 
+  Thread -> id: 3dc8 -> priority: 1 
+  Thread -> id: 2014 -> priority: 1 

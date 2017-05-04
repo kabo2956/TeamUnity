@@ -1,0 +1,111 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 760 (ID=0x1187)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   21.21.13.7653
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.084 seconds
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.248405 ms
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 760 (ID=0x1187)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   21.21.13.7653
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.039 seconds
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Kaleb\Documents\GitHub\TeamUnity\Space Adventures\lobby manager_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.190998 ms
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 447)
+
+MatchMakingClient ListMatches :https://mm.unet.unity3d.com/json/reply/ListMatchRequest
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 447)
+
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 447)
+
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 447)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.357962 ms
+UnloadTime: 0.436036 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1158.
+Total: 1.049905 ms (FindLiveObjects: 0.043884 ms CreateObjectMapping: 0.031127 ms MarkObjects: 0.958819 ms  DeleteObjects: 0.007143 ms)
+
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1164.
+Total: 1.175434 ms (FindLiveObjects: 0.087768 ms CreateObjectMapping: 0.035719 ms MarkObjects: 1.039189 ms  DeleteObjects: 0.009695 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2fd4 -> priority: 1 
+  Thread -> id: 1764 -> priority: 1 
+Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:7777}
+ClientDisconnected due to error: Timeout
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.628667 ms
+
+Unloading 164 unused Assets to reduce memory usage. Loaded Objects now: 1021.
+Total: 1.225697 ms (FindLiveObjects: 0.047456 ms CreateObjectMapping: 0.048221 ms MarkObjects: 0.883553 ms  DeleteObjects: 0.245190 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 35a4 -> priority: 1 
+  Thread -> id: 3678 -> priority: 1 

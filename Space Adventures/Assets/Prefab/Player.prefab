@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 136155248947353764}
   - component: {fileID: 95289340540736938}
   - component: {fileID: 114378439879855706}
+  - component: {fileID: 114305677578010732}
   - component: {fileID: 114053589679006216}
   m_Layer: 0
   m_Name: Player
@@ -90,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 3
-  m_SendInterval: 0.1
+  m_SendInterval: 0.04761905
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -98,6 +99,25 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114305677578010732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176594864904542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95289340540736938}
+  m_ParameterSendBits: 15
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114361744704531732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,7 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e85758a1ab0643aa932256f4fd0805b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasBeenNamed: 0
   isDummy: 0
+  playerName: 
   itemCarrying: {fileID: 0}
   player_color: 0
 --- !u!114 &114378439879855706

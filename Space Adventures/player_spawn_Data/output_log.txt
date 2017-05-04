@@ -1,0 +1,478 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 950M (ID=0x139a)
+    Vendor:   NVIDIA
+    VRAM:     2018 MB
+    Driver:   21.20.16.4534
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.043 seconds
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 2.647220 ms
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 950M (ID=0x139a)
+    Vendor:   NVIDIA
+    VRAM:     2018 MB
+    Driver:   21.20.16.4534
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.054 seconds
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Kaleb Bodisch\Documents\GitHub\TeamUnity\Space Adventures\player_spawn_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.611515 ms
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 447)
+
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 447)
+
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 447)
+
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+ 
+(Filename:  Line: 447)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.345864 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1176.
+Total: 3.338194 ms (FindLiveObjects: 0.094772 ms CreateObjectMapping: 0.067209 ms MarkObjects: 3.153934 ms  DeleteObjects: 0.012837 ms)
+
+UnloadTime: 0.310749 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1168.
+Total: 1.545816 ms (FindLiveObjects: 0.052483 ms CreateObjectMapping: 0.033604 ms MarkObjects: 1.447268 ms  DeleteObjects: 0.010949 ms)
+
+Did not find target for sync message for 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Did not find target for sync message for 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 984 -> priority: 1 
+Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:59164}
+ServerDisconnected due to error: Timeout
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.GameObject.GetComponent[Rigidbody] () [0x00000] in <filename unknown>:0 
+  at ItemBehavior.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 678 -> priority: 1 

@@ -119,7 +119,7 @@ MonoBehaviour:
   - {fileID: 1370158184267016, guid: b8e6a5a4dcec14d92a61a3aef164f4d5, type: 2}
   minSpeedX: -5
   maxSpeedX: 5
-  momentsUntilDestruction: 0
+  momentsUntilDestruction: -1
 --- !u!135 &135411302594321648
 SphereCollider:
   m_ObjectHideFlags: 1
