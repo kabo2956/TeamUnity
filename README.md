@@ -22,7 +22,7 @@ Building the Project:
 
 	If on Windows, open up the .exe at ...
 	
-	If on Mac, open up RepoLocation/OS X/Space Adventures.app
+	If on Mac, open up Space Adventures.app
 
 	If you want to mess around with the project and have Unity, just open up the project at RepoLocation/Space Adventures
 
