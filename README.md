@@ -1,81 +1,68 @@
-# TeamUnity
-CSCI-3308 semester project - game
+CSCI 3308 Semester Project - Sp4ce Adventures
 
 Team Members:
 
-  Kaleb Bodisch - kabo2956
+	Kaleb Bodisch - kabo2956
 
-  Chance Roberts - PlatPlat48
-  
-  Tamim Shaban - TamimSha
-  
-  Cale Anderson - caleianderson
+	Chance Roberts - PlatPlat48
 
-Title:
-Working Title (Sp4ce Adventures)
+	Tamim Shaban - TamimSha
 
-Description:
-Create a two dimensional game using the unity game engine.
+	Cale Anderson - caleianderson
+
+Description: Create a two dimensional game using the unity game engine.
 
 This game will be a platformer/runner game that will be procedurally generated. You will eventually be able to play online, and the goal is to outrun an explosion/supernova and be the only one to survive. There are certain things that you will be able to do to prevent your friends from getting to the end, like jumping on them.
 
 Vision Statement: To create an online competitive multiplayer runner game that we all would enjoy to play!
 
-Risks:
-  -Lack of experience using the Unity game engine.
-  -All group members have busy schedules so may be hard to meet.
-    -using slack and video chat in order to communicate.
+Building the Project:
 
-Mitigation Strategy for dealing with risk:
-  -There is ample support documentation and videos meant to aid new Unity users.
- 
-List of Requirements
+	Download the Repo.
 
-  -6 User stories 
-  
-    -“As a player, I want to be able to open a game from my desktop so that I can enter the main menu”
-    
-      -ID: 20 minutes
-      
-    -“As a player, I want to see a beautiful start menu so that I am enticed to start playing the game”
-    
-      -ID: 8 hours
-      
-    -“As a user, I want to be able to host a lobby so that friends can join my lobby”
-    
-      -ID: 8 hours
-      
-    -“As a lobby host, I want to be able to easily initialize a game so that I can begin playing the game”
-    
-      -ID: 8 hours
-      
-    -“As an avid gamer, I want to see nice graphics in a game so that I do not want to tear out my eyeballs”
-    
-      -ID: 8 hours
-      
-    -“As a player, I want to be able to play the game on multiple platforms so that I can play with my friends"
-    
-      -ID: 20 minutes
-      
+	If on Windows, open up the .exe at ...
+	
+	If on Mac, open up RepoLocation/OS X/Space Adventures.app
 
-      
-Methodology:
+	If you want to mess around with the project and have Unity, just open up the project at RepoLocation/Space Adventures
 
-For this project the team will most likely use an agile scheme for production. This production scheme seems most beneficial due to the fact that most games are built on layers. AKA there must be a map before a user can move throughout the map.
+Repo Organization: 
 
-Project Tracking Software:
+	Documentation: Contains the html documentation for the code that we have written.
 
-For this project we will be using GitHub to maintain version control between members of the team throughout the semester. 
-We will be usint PIVOTAL for project tracking. Pivotal is a useful tool because it is able to link your progress to github repositories as well as handle user stories as task throughout the project timeline.
+	Automatic Testing Images: Contains images that were shown during Part 3 of the project, showing how we automated what we could with testing.
 
-Pivotal Tracker Here -> https://www.pivotaltracker.com/n/projects/1974261
+	OS X: The OS X binary for the file.
 
-  
-Project Plan:
+	Space Adventures: The actual game contents. Contains:
 
+			Assets: Most of the Game Contents. Contains:
 
-  Start with this:
+				Animations: Animations for the player.
 
-  https://drive.google.com/file/d/0BzE3163HDGlIQXE0c0VxR3V6X0U/view?usp=sharing
-  
-  Add more to it when we need it.
+				Fonts: Fonts used in the game.
+
+				Lobby: Scripts for the Network Lobby
+
+				Materials: Materials used for different 3D objects.
+
+				Models: Models for 3D objects.
+
+				Prefab: Objects that have been placed into the game that may or may not need to be spawned.
+
+				Scenes: Scenes in the game that may or may not run.
+
+				Scripts: Scripts for the objects.
+
+				Textures: Textures for 3D objects and for 2D sprites.
+
+				UI_Samples: ???
+
+				Unit_Tests: Automated tests made to work for MonoBehaviour.
+
+				UnityVS: ???
+
+			Project Settings: Settings for the project.
+
+			Data Folders and Files: Data brought in by different scripts to be used in the game.
+			
